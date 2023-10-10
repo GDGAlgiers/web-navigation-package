@@ -1,6 +1,9 @@
+import Sidenavbar3 from "@/components/template3/SideNabBar"
 const Home = () => {
   return (
-    <div className="text-emerald-400">Open source "ya dawla"</div>
+    <div className="bg-black w-full h-full" >
+    <Sidenavbar3></Sidenavbar3>
+    </div>
   )
 }
 

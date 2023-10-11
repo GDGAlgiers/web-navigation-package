@@ -13,7 +13,7 @@ const Instance = ({imageSource ,imageAlt,instanceText, isSelected , isExpanded,o
             className="text-[#27AE60]"
             width={15}
             />
-            {isExpanded && <h1 className={isSelected ? "text-white" : "text-[#969998]"}>{instanceText}</h1>}
+            {isExpanded && <h1 className={isSelected ? "text-white text-sm" : "text-[#969998] text-sm"}>{instanceText}</h1>}
         </div>
     );
 }

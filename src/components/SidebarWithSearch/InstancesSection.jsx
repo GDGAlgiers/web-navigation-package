@@ -7,7 +7,7 @@ import weeklyTop from "../../../public/Images/SideBarWithSearch/weekly_top.svg"
 import SearchField from "./SearchField"
 import { useState } from "react"
 
-const InstancesSection = ({isExpanded}) => {
+const InstancesSection = ({isExpanded,toggleSidebar}) => {
     const [selectedInstanceIndex,setSelectedInstanceIndex] = useState(0);
     const handleClickEvent =(index)=>{
         console.log(index)
@@ -34,12 +34,12 @@ const InstancesSection = ({isExpanded}) => {
         },
     ];
   return (
-    <div className="flex flex-col w-full gap-2">
-        <SearchField />
+    <div className="flex flex-col items-center justify-center w-full gap-2">
+        <SearchField placeholder="Search instances" isExpanded={isExpanded} toggleSidebar={toggleSidebar}/>
         {Instances.map((instance,index)=>(
                 <Instance 
                     key={instance.key} 
-                    imageSource={instance.imageSource} 
+                    imageSource={instance.imageSource}
                     imageAlt={instance.imageAlt}
                     isSelected={index===selectedInstanceIndex}
                     onClick={()=> handleClickEvent(index)}

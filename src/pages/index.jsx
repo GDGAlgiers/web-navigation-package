@@ -1,9 +1,9 @@
 import Sidenavbar3 from "@/components/template3/SideNabBar"
-import Navbar from "@/components/template1/Navbar"
+import SideBarWithSearch from "@/components/SidebarWithSearch/SideBarWithSearch"
 const Home = () => {
   return (
-    <div  className="w-full h-screen bg-black">
-   <Navbar/>
+    <div className="w-full h-full bg-white" >
+      <SideBarWithSearch/>
     </div>
   )
 }

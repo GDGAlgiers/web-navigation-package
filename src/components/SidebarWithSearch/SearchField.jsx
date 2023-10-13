@@ -13,12 +13,11 @@ const SearchField = ({isExpanded , placeholder, options , toggleSidebar}) => {
   };
   
   return (
-    <form>
-      <div className="relative flex justify-center cursor-text">
+      <div className="relative w-[75%] flex justify-center  text-sm cursor-text bg-[#3A3B3B] rounded-lg" >
         <input 
         ref={inputRef}
         type="text"
-        className={"text-[#7F8080] block text-sm rounded-lg p-2.5 pl-8  bg-[#3A3B3B] outline-none appearance-none" + (isExpanded ? " w-3/4" : " w-10")}
+        className={"text-[#7F8080] block text-sm bg-[#3A3B3B] p-2.5 pl-8  outline-none appearance-none" + (isExpanded ? " w-3/4" : " w-10")}
         placeholder={isExpanded ? placeholder : ""}
         onFocus={toggleSidebar}
         {...options}
@@ -30,7 +29,6 @@ const SearchField = ({isExpanded , placeholder, options , toggleSidebar}) => {
         className={`absolute top-3.5 left-3.5 ${isExpanded && "absolute top-3.5 left-10"}`}
         />
        </div>
-    </form>
   )
 }
 

@@ -52,13 +52,22 @@ const SideNavBar = ({
           </Link>
         </div>
         {/* Links Overview */}
-        <div className={`flex flex-col ${Open && "mt-4" }`}>
-          <Link href={"/"}>
-            <div className="flex items-center gap-4 p-4">
-              <Image alt="Overview" src={Overview} />
-              <h1 className={`text-lg font-medium text-primary ${!Open && "hidden"}`}>Overview</h1>
-            </div>
-          </Link>
+        <ul className={`flex flex-col ${Open && "mt-4"}`}>
+          <li className="items-center p-4">
+            <Link href={"/"}>
+              <div className="flex items-center gap-4">
+                <Image alt="Overview" src={Overview} />
+                <h1
+                  className={`text-lg font-medium text-primary duration-300 ${
+                    !Open && "scale-0"
+                  }`}
+                >
+                  Overview
+                </h1>
+              </div>
+            </Link>
+          </li>
+
           {/* Shop Item */}
           <Link href={"/"}>
             <div className="flex items-center gap-4 p-4">
@@ -123,7 +132,7 @@ const SideNavBar = ({
               <h1 className="text-lg font-medium text-primary">Schedule</h1>
             </div>
           </Link>
-        </div>
+        </ul>
       </div>
       {/* Wrapper Div */}
       <div>

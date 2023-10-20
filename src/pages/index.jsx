@@ -1,12 +1,14 @@
 import Navbar from "@/components/template1/Navbar";
+import Navbar2 from "@/components/template2/Navbar";
 import logo from "public/Images/template1/Navbar/logo-botw.png";
 import profilpic from "public/Images/template1/Navbar/profilpic.svg";
+import settingsIcon from "public/images/template2/settings.svg";
 
 const Home = () => {
   const links = [
     {
       name: "Home",
-      route: "/"
+      route: "/",
     },
     {
       name: "Landing",
@@ -24,7 +26,19 @@ const Home = () => {
 
   return (
     <div className="w-full h-[150vh] bg-black">
-      <Navbar links={links} loginRoute="/login" menuType="bottom-bar" ButtonColor="red" SignInRoute="/Signin" logo={logo} textColor="#3A4F39" textSize="18px" logoProfil={profilpic} layout="Fixed" />
+      {/* <Navbar
+        links={links}
+        loginRoute="/login"
+        menuType="bottom-bar"
+        ButtonColor="red"
+        SignInRoute="/Signin"
+        logo={logo}
+        textColor="#3A4F39"
+        textSize="18px"
+        logoProfil={profilpic}
+        layout="Fixed"
+      /> */}
+      <Navbar2 links={[{ link: "#", name: "settings", icon: settingsIcon }]} />
     </div>
   );
 };

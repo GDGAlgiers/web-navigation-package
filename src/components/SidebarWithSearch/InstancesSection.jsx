@@ -2,7 +2,7 @@ import Instance from "./Instance"
 import SearchField from "./SearchField"
 import { useState } from "react"
 
-const InstancesSection = ({ searchBarCustomization, instances ,isExpanded,toggleSidebar,textColor,textSize,activeTextColor,activeBg,bg}) => {
+const InstancesSection = ({ searchBarCustomization, instances ,isExpanded,toggleSidebar,textColor,textSize,activeTextColor,activeBg,bg,onSearch}) => {
     const [selectedInstanceIndex,setSelectedInstanceIndex] = useState(-1);
     const handleClickEvent =(index)=>{
         setSelectedInstanceIndex(index);
@@ -10,7 +10,7 @@ const InstancesSection = ({ searchBarCustomization, instances ,isExpanded,toggle
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-2">
-        <SearchField searchBarCustomization={searchBarCustomization} isExpanded={isExpanded} toggleSidebar={toggleSidebar}/>
+        <SearchField onSearch={onSearch} searchBarCustomization={searchBarCustomization} isExpanded={isExpanded} toggleSidebar={toggleSidebar}/>
         {instances.map((instance,index)=>(
                 <Instance
                     textColor={textColor}

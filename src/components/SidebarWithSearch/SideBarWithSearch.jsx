@@ -14,7 +14,6 @@ const SideBarWithSearch = (
         instances,
         options,
         settings,
-        searchInstances,
         searchBarCustomization,
         generalStyles,
     }
@@ -23,6 +22,29 @@ const SideBarWithSearch = (
     const toggleSidebar = () => {
         setIsExpanded(true);
     };
+    const [instancesState,setInstancesState] = useState(instances)
+    const [settingsState,setSettingsState] = useState(settings)
+    const [optionsState,setOptionsState] = useState(options)
+    const onSearch=(searchValue)=>{
+        if(searchValue != ""){
+            setInstancesState(prev=>{
+                const filteredItems=prev.filter(state=>state.text.includes(searchValue) || state.route.includes(searchValue))
+                return filteredItems
+            })
+            setOptionsState(prev=>{
+                const filteredItems=prev.filter(state=>state.text.includes(searchValue) || state.route.includes(searchValue))
+                return filteredItems
+            })
+            setSettingsState(prev=>{
+                const filteredItems=prev.filter(state=>state.text.includes(searchValue) || state.route.includes(searchValue))
+                return filteredItems
+            })
+        }else{
+            setInstancesState(instances)
+            setSettingsState(settings)
+            setOptionsState(options)
+        }
+    }
     const untoggleSidebar = () => {
         setIsExpanded(false);
     };
@@ -37,10 +59,10 @@ const SideBarWithSearch = (
         >
             <Header logo={logo} name={name} isExpanded={isExpanded} untoggleSidebar={untoggleSidebar} logoTextSize={logoTextSize} />
             <SeperatingLine isExpanded={isExpanded} seperatingLineColor={seperatingLineColor}/>
-            <InstancesSection searchBarCustomization={searchBarCustomization} searchInstances={searchInstances} instances={instances} isExpanded={isExpanded} toggleSidebar={toggleSidebar} textSize={textSize} activeTextColor={activeTextColor} bg={bg} textColor={textColor} activeBg={activeBg}/>
+            <InstancesSection onSearch={onSearch} searchBarCustomization={searchBarCustomization} instances={instancesState} isExpanded={isExpanded} toggleSidebar={toggleSidebar} textSize={textSize} activeTextColor={activeTextColor} bg={bg} textColor={textColor} activeBg={activeBg}/>
             <SeperatingLine isExpanded={isExpanded} seperatingLineColor={seperatingLineColor}/>
-            <OptionsSection options={options} isExpanded={isExpanded} textColor={textColor} textSize={textSize} />
-            <SettingsSection settings={settings} isExpanded={isExpanded} textColor={textColor} textSize={textSize} />
+            <OptionsSection options={optionsState} isExpanded={isExpanded} textColor={textColor} textSize={textSize} />
+            <SettingsSection settings={settingsState} isExpanded={isExpanded} textColor={textColor} textSize={textSize} />
             <SeperatingLine isExpanded={isExpanded} seperatingLineColor={seperatingLineColor}/>
             {loggedIn && <Footer profileInformation={profileInformation} isExpanded={isExpanded} textColor={textColor}/>}
         </div>

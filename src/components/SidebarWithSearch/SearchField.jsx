@@ -2,21 +2,15 @@ import Image from "next/image";
 import searchLoop from "../../../public/Images/SideBarWithSearch/search_logo.svg";
 import {useRef, useState} from "react";
 
-const SearchField = ({isExpanded ,searchBarCustomization, toggleSidebar}) => {
-  const [inputValue, setInputValue] = useState('');
+const SearchField = ({isExpanded ,searchBarCustomization, toggleSidebar,onSearch}) => {
   const inputRef = useRef(null);
-
   const handleImageClick = () => {
     if (inputRef.current) {
       inputRef.current.focus();
       toggleSidebar();
     }
   };
-  const {placeholder,bg ,textColor, textSize, searchItems, options} = searchBarCustomization;
-  const handleChangeEvent = (event) => {
-    setInputValue(event.target.value);
-    searchItems(inputValue);
-  }
+  const {placeholder,bg ,textColor, textSize, options} = searchBarCustomization;
   return (
       <div
           className="relative w-[75%] flex justify-center cursor-text rounded-lg"
@@ -28,7 +22,7 @@ const SearchField = ({isExpanded ,searchBarCustomization, toggleSidebar}) => {
           className={"block p-2.5 pl-6 outline-none appearance-none rounded-lg" + (isExpanded ? " w-3/4" : " w-10")}
           placeholder={isExpanded ? placeholder : ""}
           onFocus={toggleSidebar}
-          onChange={searchItems}
+          onChange={(e)=>onSearch(e.target.value)}
           style={{backgroundColor:bg , fontSize:textSize, color:textColor}}
           {...options}
         />

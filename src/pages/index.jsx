@@ -79,7 +79,6 @@ const Home = () => {
 
   const searchBarCustomization = {
       placeholder:"search instances",
-      searchItems: (searchQuery) => {},
       options:{},
       bg:"#3A3B3B",
       textSize: "0.8rem",
@@ -88,7 +87,7 @@ const Home = () => {
 
   return (
     <div className="w-full h-[150vh] bg-black">
-      <SideBarWithSearch logo={<Image src={logo} alt="logo" />} name="ModGallery" searchBarCustomization={searchBarCustomization} searchInstances={instances} profileInformation={profileInformation} instances={instances} settings={settings} options={options} layout="Fixed" loggedIn={true} generalStyles={generalStyles}/>
+      <SideBarWithSearch logo={<Image src={logo} alt="logo" />} name="ModGallery" searchBarCustomization={searchBarCustomization}  profileInformation={profileInformation} instances={instances} settings={settings} options={options} layout="Fixed" loggedIn={true} generalStyles={generalStyles}/>
     </div>
   );
 };

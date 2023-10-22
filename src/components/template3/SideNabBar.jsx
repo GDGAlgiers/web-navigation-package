@@ -47,7 +47,7 @@ const Sidenavbar3 = (props) => {
         >
           {Userlinks.map((Userlink, index) => {
             return (
-              <Link href={Userlink.route}>
+              <Link key={index} href={Userlink.route}>
                 <div className="flex items-center justify-between">
                   <div className="p-2 flex items-center gap-4">
                     {Userlink.icon}

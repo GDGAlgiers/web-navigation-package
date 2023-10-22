@@ -3,7 +3,6 @@ import Dashboard from "public/Images/template3/dashboard.svg";
 import Box from "public/Images/template3/box.svg";
 import analysis from "public/Images/template3/analysis.svg";
 import Image from "next/image";
-import Link from "next/link";
 import logout from "public/Images/template3/sign-out.svg";
 import msg from "public/Images/template3/chat.svg";
 import money from "public/Images/template3/money-bill.svg";

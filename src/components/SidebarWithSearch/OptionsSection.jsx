@@ -1,24 +1,20 @@
 import Image from "next/image"
-import heart from "../../../public/Images/SideBarWithSearch/heart.svg"
-import gallery from "../../../public/Images/SideBarWithSearch/gallery.svg"
-import cart from "../../../public/Images/SideBarWithSearch/cart.svg"
+import Link from "next/link"
 
-const OptionsSection = ({isExpanded}) => {
+const OptionsSection = ({options,isExpanded , textColor,textSize}) => {
   return (
-    <div className="flex flex-col w-full gap-4">
-        <div className={`flex items-center w-full hover:cursor-pointer ${isExpanded ? "gap-4 px-12" : "justify-center"}`}>
-            <Image src={heart} alt="heart" width={15}/>
-            {isExpanded && <h1 className="text-[#969998] text-xs">My gallery</h1>}
-        </div>
-        <div className={`flex items-center w-full hover:cursor-pointer ${isExpanded ? "gap-4 px-12" : "justify-center"}`}>
-            <Image src={gallery} alt="gallery" width={15}/>
-            {isExpanded && <h1 className="text-[#969998] text-xs">Favourites</h1>}
-        </div>
-        <div className={`flex items-center w-full hover:cursor-pointer ${isExpanded ? "gap-4 px-12" : "justify-center"}`}>
-            <Image src={cart} alt="cart" width={15}/>
-            {isExpanded && <h1 className="text-[#969998] text-xs">My Cart</h1>}
-        </div>
-    </div>
+      <div className="flex flex-col w-full gap-4 mb-5">
+          {
+              options.map((option , index)=>(
+                  <Link href={option.route} key={index}>
+                      <div className={`flex items-center w-full hover:cursor-pointer ${isExpanded ? "gap-4 px-12" : "justify-center"}`}>
+                          {option.image}
+                          {isExpanded && <h1 style={{fontSize:textSize,color:textColor}}>{option.text}</h1>}
+                      </div>
+                  </Link>
+              ))
+          }
+      </div>
   )
 }
 

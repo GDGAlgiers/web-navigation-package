@@ -1,93 +1,93 @@
-import home from "public/Images/template3/home-blue.svg";
-import Dashboard from "public/Images/template3/dashboard.svg";
-import Box from "public/Images/template3/box.svg";
-import analysis from "public/Images/template3/analysis.svg";
+import SideBarWithSearch from "@/components/SidebarWithSearch/SideBarWithSearch";
+import logo from "public/Images/SideBarWithSearch/logo.svg";
+import profilePicture from "public/Images/SideBarWithSearch/profile_picture.svg";
+import objectsSets from "public/Images/SideBarWithSearch/object_sets.svg"
+import singleObjects from "public/Images/SideBarWithSearch/single_objects.svg"
+import weeklyTop from "public/Images/SideBarWithSearch/weekly_top.svg"
+import settingsPic from "public/Images/SideBarWithSearch/settings.svg"
+import faq from "public/Images/SideBarWithSearch/faq.svg"
+import heart from "public/Images/SideBarWithSearch/heart.svg"
+import gallery from "public/Images/SideBarWithSearch/gallery.svg"
+import cart from "public/Images/SideBarWithSearch/cart.svg"
 import Image from "next/image";
-import logout from "public/Images/template3/sign-out.svg";
-import msg from "public/Images/template3/chat.svg";
-import money from "public/Images/template3/money-bill.svg";
-import setting from "public/Images/template3/setting.svg";
-import notif from "public/Images/template3/bell.svg";
-import history from "public/Images/template3/clock-five.svg";
-import profil from "public/Images/template3/profilpic.svg";
-import Sidenavbar3 from "@/components/template3/SideNabBar";
-import logo from "public/Images/template3/Logo.svg";
 
 const Home = () => {
-  const links = [
-    {
-      name: "Home",
-      route: "/",
-      icon: <Image alt="home" src={home} />,
-    },
-    {
-      name: "Dashboard",
-      route: "/Dashboard",
-      icon: <Image alt="home" src={Dashboard} />,
-    },
-    {
-      name: "Products",
-      route: "/Products",
-      icon: <Image alt="box" src={Box} />,
-    },
-    {
-      name: "Analytics",
-      route: "/Analytics",
-      icon: <Image alt="analysis" src={analysis} />,
-    },
-    {
-      name: "History",
-      route: "/History",
-      icon: <Image alt="history" src={history} />,
-    },
-    {
-      name: "Sales",
-      route: "/Sales",
-      icon: <Image alt="Sales" src={money} />,
-    },
-  ];
-  const Userlinks = [
-    {
-      name: "Message",
-      route: "/Message",
-      icon: <Image alt="msg" src={msg} />,
-      notif: 5,
-    },
-    {
-      name: "Notifications",
-      route: "/notif",
-      icon: <Image alt="notif" src={notif} />,
-      notif: 2,
-    },
-    {
-      name: "Settings",
-      route: "/setting",
-      icon: <Image alt="setting" src={setting} />,
-    },
-    {
-      name: "Log out",
-      route: "/logout",
-      icon: <Image alt="logout" src={logout} />,
-    },
-  ];
-  const user = {
-    name: "Michael Smith",
-    email: "michaelsmith12@gmail.com",
-    pic: profil,
+  const profileInformation = {
+    profilePicture: <Image src={profilePicture} alt="profile picture" />,
+    fullName: "John Doe",
+    companyName: "MadGallery Basic",
   };
+
+  const settings = [
+      {
+          image:<Image src={settingsPic} alt="settings" />,
+          text:"settings",
+          route:"/settings",
+      },
+      {
+          image:<Image src={faq} alt="FAQ"/>,
+          text:"FAQ",
+          route:"/faq",
+      },
+  ]
+
+  const options =[
+      {
+          image:<Image src={heart} alt="fav"/>,
+          text:"Favourites",
+          route:"/favourites",
+      },
+      {
+          image: <Image src={gallery} alt="gallery"/>,
+          text:"My gallery",
+          route:"/gallery",
+      },
+      {
+          image:<Image src={cart} alt="cart" />,
+          text:"My Cart",
+          route:"/cart",
+      }
+  ]
+
+  const instances = [
+        {
+            image:<Image src={weeklyTop} alt="weekly top" width={15}/>,
+            text:"Weekly top",
+            route:"/weekly-top"
+        },
+        {
+            image: <Image src={singleObjects} alt="Single objects" width={15}/>,
+            text:"Single objects",
+            route:"/single-objects"
+        },
+        {
+            image : <Image src={objectsSets} alt="Objects sets" width={15} />,
+            text:"Objects sets",
+            route:"/objects-sets"
+        },
+  ];
+
+  const generalStyles = {
+      textSize: "0.75rem",
+      logoTextSize:"1.25rem",
+      textColor:"#969998",
+      activeTextColor:"white",
+      bg:"#171918",
+      activeBg:"#27AE60",
+      seperatingLineColor:"#FFFFFF26",
+  }
+
+  const searchBarCustomization = {
+      placeholder:"search instances",
+      options:{},
+      bg:"#3A3B3B",
+      textSize: "0.8rem",
+      textColor: "#7F8080",
+  }
+
   return (
     <div className="w-full h-[150vh] bg-black">
-      <Sidenavbar3
-        logo={logo}
-        Name="Social Blade"
-        textSize="16px"
-        textColor="red"
-        ActivetextColor="green"
-        ActiveBg="red"
-        Userlinks={Userlinks}
-        links={links}
-        User={user}
-      />
+      <SideBarWithSearch logo={<Image src={logo} alt="logo" />} name="ModGallery" searchBarCustomization={searchBarCustomization}  profileInformation={profileInformation} instances={instances} settings={settings} options={options} layout="Fixed" loggedIn={true} generalStyles={generalStyles}/>
     </div>
   );
 };

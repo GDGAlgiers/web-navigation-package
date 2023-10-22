@@ -1,46 +1,26 @@
-'use client'
-
 import Instance from "./Instance"
-import objectsSets from "../../../public/Images/SideBarWithSearch/object_sets.svg"
-import singleObjects from "../../../public/Images/SideBarWithSearch/single_objects.svg"
-import weeklyTop from "../../../public/Images/SideBarWithSearch/weekly_top.svg"
 import SearchField from "./SearchField"
 import { useState } from "react"
 
-const InstancesSection = ({isExpanded,toggleSidebar}) => {
-    const [selectedInstanceIndex,setSelectedInstanceIndex] = useState(0);
+const InstancesSection = ({ searchBarCustomization, instances ,isExpanded,toggleSidebar,textColor,textSize,activeTextColor,activeBg,bg}) => {
+    const [selectedInstanceIndex,setSelectedInstanceIndex] = useState(-1);
     const handleClickEvent =(index)=>{
-        console.log(index)
         setSelectedInstanceIndex(index);
     };
-    const Instances = [
-        {
-            key:1,
-            imageSource: weeklyTop,
-            imageAlt: "weekly top",
-            text:"Weekly top"
-        },
-        {
-            key:2,
-            imageSource: singleObjects,
-            imageAlt: "Single objects",
-            text:"Single objects"
-        },
-        {
-            key:3,
-            imageSource: objectsSets,
-            imageAlt: "Objects sets",
-            text:"Objects sets"
-        },
-    ];
+
   return (
     <div className="flex flex-col items-center justify-center w-full gap-2">
-        <SearchField placeholder="Search instances" isExpanded={isExpanded} toggleSidebar={toggleSidebar}/>
-        {Instances.map((instance,index)=>(
-                <Instance 
-                    key={instance.key} 
-                    imageSource={instance.imageSource}
-                    imageAlt={instance.imageAlt}
+        <SearchField searchBarCustomization={searchBarCustomization} isExpanded={isExpanded} toggleSidebar={toggleSidebar}/>
+        {instances.map((instance,index)=>(
+                <Instance
+                    textColor={textColor}
+                    textSize={textSize}
+                    activeTextColor={activeTextColor}
+                    activeBg={activeBg}
+                    bg={bg}
+                    key={index}
+                    image={instance.image}
+                    link={instance.route}
                     isSelected={index===selectedInstanceIndex}
                     onClick={()=> handleClickEvent(index)}
                     isExpanded={isExpanded}

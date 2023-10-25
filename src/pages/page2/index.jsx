@@ -1,3 +1,3 @@
-export default function qq2() {
-  return <div>index1</div>;
+export default function page2() {
+  return <div>index2</div>;
 }

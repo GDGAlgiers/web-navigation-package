@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useRouter } from "next/router";
 import ItemChildrenList from "./ItemChildrenList";
 
-export default function LinkList({ links, Open , generaleStyles}) {
+export default function LinkList({ links, Open, setOpen, generaleStyles}) {
   const [selectedElement, setSelectedElement] = useState(null);
   const [selectedChild, setSelectedChild] = useState(null);
   const {
@@ -63,6 +63,7 @@ export default function LinkList({ links, Open , generaleStyles}) {
             setSelectedChild={setSelectedChild}
             ActiveTextColor={ActiveTextColor}
             Open={Open}
+            setOpen={setOpen}
           />
         )
       )}

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Image from "next/image";
 
-const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedChild, ActiveTextColor, Open }) => {
+const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedChild, ActiveTextColor, Open, setOpen }) => {
 
     const router = useRouter();
 
@@ -19,6 +19,7 @@ const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedC
                     } ${!Open ? "p-0 justify-center" : "justify-between"}`}
                     onClick={() => {
                         setSelectedElement(element);
+                        (!Open) && setOpen(true);
                     }}
                 >
                     <div className="flex items-center gap-2 md:gap-4">

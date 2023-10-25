@@ -46,6 +46,7 @@ const SideNavBar = ({
         <LinkList
           links={links}
           Open={Open}
+          setOpen={setOpen}
           generaleStyles={generaleStyles}
         />
       </div>

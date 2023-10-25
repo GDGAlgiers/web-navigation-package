@@ -1,5 +1,3 @@
-import React from "react";
-
-export default function qq2() {
+export default function page4() {
   return <div>index4</div>;
 }

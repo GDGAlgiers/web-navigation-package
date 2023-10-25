@@ -11,7 +11,14 @@ export default function LinkList({ links, Open , generaleStyles}) {
   const [linkOpen, setLinkOpen] = useState(true);
   const [selectedElement, setSelectedElement] = useState(null);
   const [selectedChild, setSelectedChild] = useState(null);
-  const { textSize, textColor, HoverColor, BorderColor } = generaleStyles;
+  const {
+    textSize,
+    textColor,
+    HoverColor,
+    BorderColor,
+    BackgroundColor,
+    ActiveTextColor,
+  } = generaleStyles;
   const router = useRouter();
 
   useEffect(() => {
@@ -25,7 +32,10 @@ export default function LinkList({ links, Open , generaleStyles}) {
   }, []);
 
   return (
-    <ul className={`flex flex-col gap-1 ${Open && "mt-8"}`}>
+    <ul
+      className={`flex flex-col gap-1 ${Open && "mt-8"}`}
+      style={{ color: `${textColor}`, fontSize: `${textSize}` }}
+    >
       {links.map((element, index) =>
         !element.childItems ? (
           <li
@@ -33,10 +43,15 @@ export default function LinkList({ links, Open , generaleStyles}) {
             className={`items-center w-full drop-shadow-xl rounded-xl ${
               element.link === router.pathname
                 ? "border"
-                : "hover:bg-zinc-300 hover:text-zinc-500"
+                : "drop-shadow-xl rounded-xl hover:bg-zinc-300"
             }`}
             onClick={() => {
               setSelectedElement(element);
+            }}
+            style={{
+              backgroundColor: `${
+                element.link == router.pathname && BackgroundColor
+              }`,
             }}
           >
             <Link href={element.link}>
@@ -44,7 +59,7 @@ export default function LinkList({ links, Open , generaleStyles}) {
                 <Image src={element.icon} alt={element.name} />
                 {/* logo */}
                 <h1
-                  className={`text-lg font-medium text-primary duration-300  ${
+                  className={`text-lg font-medium duration-300  ${
                     !Open && "scale-0"
                   }`}
                 >
@@ -68,9 +83,10 @@ export default function LinkList({ links, Open , generaleStyles}) {
                 <div className="flex items-center gap-4">
                   <Image src={element.icon} alt={element.name} />
                   <h1
-                    className={`text-lg font-medium text-primary duration-300  ${
+                    className={`text-lg font-medium duration-300  ${
                       !Open && "scale-0"
                     }`}
+                    style={{ color: `${textColor}` }}
                   >
                     {element.name}
                   </h1>
@@ -101,19 +117,39 @@ export default function LinkList({ links, Open , generaleStyles}) {
                     setSelectedChild(child);
                   }}
                 >
-                  <Link href={element.link+child.link}>
+                  <Link href={element.link + child.link}>
                     <div className="flex items-center gap-4">
                       <div
-                        className={`w-2 h-2 rounded-full  ${
-                          element.link+child.link === router.pathname
-                            ? "bg-blue-600"
-                            : "bg-slate-600"
-                        }`}
+                        className={`w-2 h-2 rounded-full  duration-300 `}
+                        style={{
+                          backgroundColor: `${
+                            element.link + child.link === router.pathname
+                              ? ActiveTextColor
+                              : textColor
+                          }`,
+                          opacity: `${
+                            element.link + child.link === router.pathname
+                              ? 1
+                              : 0.7
+                          }`,
+                        }}
                       />
                       <h1
-                        className={`text-lg font-medium text-primary duration-300 ${
+                        className={`text-lg font-medium duration-300 ${
                           !Open && "scale-0"
                         }`}
+                        style={{
+                          color: `${
+                            element.link + child.link === router.pathname
+                              ? ActiveTextColor
+                              : textColor
+                          }`,
+                          opacity: `${
+                            element.link + child.link === router.pathname
+                              ? 1
+                              : 0.7
+                          }`,
+                        }}
                       >
                         {child.name}
                       </h1>

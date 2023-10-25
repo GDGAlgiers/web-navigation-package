@@ -14,54 +14,6 @@ import Support from "public/Images/template2/Support.png";
 import Collapse from "public/Images/template2/Subtract.svg";
 
 const Home = () => {
-  const islogedin = true;
-  const logo = Pic;
-  const links = [
-    {
-      link: "/qq1",
-      name: "Overview",
-      icon: Overview,
-    },
-    {
-      link: "/qq2",
-      name: "Calendar",
-      icon: Calendar,
-    },
-    {
-      link: "/qq3",
-      name: "Chat",
-      icon: Chat,
-      childItems: [
-        {
-          link: "/",
-          name: "Overview",
-          icon: "1",
-        },
-        {
-          link: "/",
-          name: "List",
-          icon: "2",
-        },
-      ],
-    },
-    {
-      link: "/qq4",
-      name: "Settings",
-      icon: Settings,
-      childItems: [
-        {
-          link: "/",
-          name: "Overview",
-          icon: "1",
-        },
-        {
-          link: "/",
-          name: "List",
-          icon: "2",
-        },
-      ],
-    },
-  ];
 
   return (
     <div className="w-full h-full bg-black">

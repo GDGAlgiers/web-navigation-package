@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Pic from "public/Images/template2/picture.png";
 import Arrow from "public/Images/template2/Down.svg";
 import Support from "public/Images/template2/Support.png";
 import Collapse from "public/Images/template2/Subtract.svg";
@@ -17,11 +16,6 @@ const SideNavBar = ({
   const [Open, setOpen] = useState(true);
    const { textSize, textColor, BackgroudColor } = generaleStyles;
   return (
-<<<<<<< HEAD
-    <nav style={{ fontSize: `${textSize}`, color: `${textColor}` }}
-      className={`no-scrol transition-all flex flex-col items-center justify-between h-[100vh] gap-8  overflow-y-scroll overflow-x-hidden bg-white duration-300 ${
-        Open ? "w-80 px-6 py-5" : "w-20 py-0 px-1"
-=======
     <nav
       style={{
         fontSize: `${textSize}`,
@@ -30,7 +24,6 @@ const SideNavBar = ({
       }}
       className={`no-scrol flex flex-col items-center justify-between h-[100vh] gap-8  overflow-y-scroll overflow-x-hidden duration-300 ${
         Open ? "w-80 px-6 py-5" : "w-20 py-0 px-0"
->>>>>>> 90a0fbabf401fff731ff914858583b891042a1dd
       }`}
     >
       {/* a Wrapper div  */}
@@ -47,12 +40,6 @@ const SideNavBar = ({
               <h1 className="text-lg font-bold ">{user.name}</h1>
               <p className="text-sm opacity-50">{user.role}</p>
             </div>
-            {/* <Link href={"/"}>
-              <Image
-                src={Arrow}
-                className={`duration-300 ${!Open && "hidden"}`}
-              />
-            </Link> */}
           </div>
         )}
         {/* Links Overview */}
@@ -61,24 +48,16 @@ const SideNavBar = ({
       {/* Wrapper Div */}
       <div className="w-full">
         <Link href={"/"} className="">
-<<<<<<< HEAD
           {
             (Open)
             ?
             <div className="flex items-center justify-center gap-4 px-6 py-3 border-2 border-gray-300 rounded-2xl">
               <Image alt="Support" src={Support} />
               <div>
-                <h1 className="text-lg font-bold text-primary">Help Center</h1>
-                <p className="text-sm opacity-50 text-primary">Answer Here</p>
+                <h1 className="text-lg font-bold">Help Center</h1>
+                <p className="text-sm opacity-50">Answer Here</p>
               </div>
               <Image src={Arrow} className="-rotate-90" />
-=======
-          <div className="flex items-center justify-center gap-4 px-6 py-3 border-2 rounded-2xl">
-            <Image alt="Support" src={Support} />
-            <div style={{ fontSize: `${textSize}`, color: `${textColor}` }}>
-              <h1 className="text-lg font-bold ">Help Center</h1>
-              <p className="text-sm opacity-50 ">Answer Here</p>
->>>>>>> 90a0fbabf401fff731ff914858583b891042a1dd
             </div>
             :
             <div className="flex justify-center p-2 drop-shadow-xl rounded-xl hover:bg-zinc-300">

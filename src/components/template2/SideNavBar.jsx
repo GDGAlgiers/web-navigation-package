@@ -31,7 +31,7 @@ const SideNavBar = ({
         {/* Profile pic and preview */}
         {user.isLogedIn && (
           <div
-            className={`flex justify-center items-center rounded-3xl w-full text-primary duration-100 ${
+            className={`flex justify-center items-center rounded-3xl w-full duration-100 ${
               Open ? "border-2 py-2 gap-2" : "p-0 my-6 border-0"
             }`}
           >

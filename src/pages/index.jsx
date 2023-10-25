@@ -1,5 +1,5 @@
-import Sidenavbar2 from "@/components/template2/SideNavBar"
-import Sidenavbar3 from "@/components/template3/SideNabBar"
+import Sidenavbar2 from "@/components/template2/SideNavBar";
+import Sidenavbar3 from "@/components/template3/SideNabBar";
 import Image from "next/image";
 import Link from "next/link";
 import Pic from "public/Images/template2/picture.png";
@@ -15,44 +15,46 @@ import Collapse from "public/Images/template2/Subtract.svg";
 
 const Home = () => {
   const islogedin = true;
-  const logo= Pic;
+  const logo = Pic;
   const links = [
     {
-      link: "/",
+      link: "/qq1",
       name: "Overview",
       icon: Overview,
-      children: [
-        {
-          link: "/",
-          name: "Overview",
-        },
-        {
-          link: "/",
-          name: "List",
-        },
-      ],
     },
     {
-      link: "/",
+      link: "/qq2",
       name: "Calendar",
       icon: Calendar,
     },
     {
-      link: "/",
+      link: "/qq3",
       name: "Chat",
       icon: Chat,
-    },{
-      link: "/",
+    },
+    {
+      link: "/qq4",
       name: "Settings",
       icon: Settings,
+      children: [
+        {
+          link: "/",
+          name: "Overview",
+          icon: "1",
+        },
+        {
+          link: "/",
+          name: "List",
+          icon: "2",
+        },
+      ],
     },
   ];
 
   return (
     <div className="w-full h-full bg-black">
-      <Sidenavbar2 links={links} logo={logo} isLogedIn={islogedin}/>
     </div>
   );
 };
 
-export default Home
+export default Home;

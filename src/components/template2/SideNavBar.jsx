@@ -16,8 +16,9 @@ const SideNavBar = ({
   buttonsActions,
 }) => {
   const [Open, setOpen] = useState(true);
+   const { textSize, textColor, HoverColor, BorderColor } = generaleStyles;
   return (
-    <nav
+    <nav style={{ fontSize: `${textSize}`, color: `${textColor}` }}
       className={`no-scrol flex flex-col items-center justify-between h-[100vh] gap-8  overflow-y-scroll overflow-x-hidden bg-white duration-300 ${
         Open ? "w-80 px-6 py-5" : "w-20 py-0 px-0"
       }`}
@@ -45,7 +46,7 @@ const SideNavBar = ({
           </div>
         )}
         {/* Links Overview */}
-        <LinkList links={links} Open={Open} />
+        <LinkList links={links} Open={Open} generaleStyles={generaleStyles} />
       </div>
       {/* Wrapper Div */}
       <div className="w-full">

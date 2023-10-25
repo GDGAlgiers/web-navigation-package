@@ -1,22 +1,36 @@
-"use client"
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Arrow from "public/Images/template2/Down.svg";
 import Gift from "public/Images/template2/Gift.svg";
 import Gift1 from "public/Images/template2/Gift1.svg";
 import Gift2 from "public/Images/template2/Gift2.svg";
+import { useRouter } from "next/router";
 
-export default function LinkList({ links, Open }) {
-  const [linkOpen, setLinkOpen] = useState(null);
+export default function LinkList({ links, Open , generaleStyles}) {
+  const [linkOpen, setLinkOpen] = useState(true);
   const [selectedElement, setSelectedElement] = useState(null);
   const [selectedChild, setSelectedChild] = useState(null);
+  const { textSize, textColor, HoverColor, BorderColor } = generaleStyles;
+  const router = useRouter();
   const selectElement = (item) => {
     setSelectedElement(item);
   };
   const selectChild = (child) => {
     setSelectedChild(child);
   };
+
+  useEffect(() => {
+      const data = JSON.parse(localStorage.getItem("LINK_IS_OPEN_VALUE"));
+      console.log(data);
+      if (data) {
+        setLinkOpen(data);
+      }
+  }, []);
+  useEffect(() => {
+    window.localStorage.setItem("LINK_IS_OPEN_VALUE", JSON.stringify(linkOpen));
+  }, [linkOpen]);
+
   return (
     <ul className={`flex flex-col gap-1 ${Open && "mt-8"}`}>
       {links.map((element, index) =>
@@ -24,8 +38,8 @@ export default function LinkList({ links, Open }) {
           <li
             key={index}
             className={`items-center w-full drop-shadow-xl rounded-xl ${
-              element === selectedElement
-                ? "bg-blue-500 text-white"
+              element.link === router.pathname
+                ? "border"
                 : "hover:bg-zinc-300 hover:text-zinc-500"
             }`}
             onClick={() => {
@@ -51,10 +65,8 @@ export default function LinkList({ links, Open }) {
           <li key={index} className="items-center w-full">
             <Link href={element.link}>
               <div
-                className={`flex items-center justify-between p-4 drop-shadow-xl rounded-xl ${
-                  element === selectedElement
-                    ? "bg-blue-500 text-white"
-                    : "hover:bg-zinc-300 hover:text-zinc-500"
+                className={`flex items-center justify-between p-4 drop-shadow-xl rounded-xl hover:bg-zinc-300 hover:text-zinc-500 ${
+                  element.link === router.pathname && "border text-white"
                 } ${!Open && "p-0"}`}
                 onClick={() => {
                   selectElement(element);
@@ -99,13 +111,13 @@ export default function LinkList({ links, Open }) {
                     <div className="flex items-center gap-4">
                       <div
                         className={`w-2 h-2 rounded-full  ${
-                          selectedChild === child
+                          child.link === router.pathname
                             ? "bg-blue-600"
                             : "bg-slate-600"
                         }`}
                       />
                       <h1
-                        className={`text-lg font-medium text-primary duration-300  ${
+                        className={`text-lg font-medium text-primary duration-300 ${
                           !Open && "scale-0"
                         }`}
                       >

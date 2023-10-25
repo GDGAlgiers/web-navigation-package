@@ -31,12 +31,24 @@ const Home = () => {
       link: "/qq3",
       name: "Chat",
       icon: Chat,
+      childItems: [
+        {
+          link: "/",
+          name: "Overview",
+          icon: "1",
+        },
+        {
+          link: "/",
+          name: "List",
+          icon: "2",
+        },
+      ],
     },
     {
       link: "/qq4",
       name: "Settings",
       icon: Settings,
-      children: [
+      childItems: [
         {
           link: "/",
           name: "Overview",

@@ -13,28 +13,21 @@ export default function LinkList({ links, Open , generaleStyles}) {
   const [selectedChild, setSelectedChild] = useState(null);
   const { textSize, textColor, HoverColor, BorderColor } = generaleStyles;
   const router = useRouter();
-  const selectElement = (item) => {
-    setSelectedElement(item);
-  };
-  const selectChild = (child) => {
-    setSelectedChild(child);
-  };
 
   useEffect(() => {
-      const data = JSON.parse(localStorage.getItem("LINK_IS_OPEN_VALUE"));
+    const data = localStorage.getItem("LINK_IS_OPEN_VALUE");
+    if (data) {
       console.log(data);
-      if (data) {
-        setLinkOpen(data);
-      }
+      setLinkOpen(() => !!data);
+    } else {
+      localStorage.setItem("LINK_IS_OPEN_VALUE", true);
+    }
   }, []);
-  useEffect(() => {
-    window.localStorage.setItem("LINK_IS_OPEN_VALUE", JSON.stringify(linkOpen));
-  }, [linkOpen]);
 
   return (
     <ul className={`flex flex-col gap-1 ${Open && "mt-8"}`}>
       {links.map((element, index) =>
-        !element.children ? (
+        !element.childItems ? (
           <li
             key={index}
             className={`items-center w-full drop-shadow-xl rounded-xl ${
@@ -43,11 +36,11 @@ export default function LinkList({ links, Open , generaleStyles}) {
                 : "hover:bg-zinc-300 hover:text-zinc-500"
             }`}
             onClick={() => {
-              selectElement(element);
+              setSelectedElement(element);
             }}
           >
             <Link href={element.link}>
-              <div className="flex items-center gap-4 p-4">
+              <div className="flex items-center gap-4 p-3">
                 <Image src={element.icon} alt={element.name} />
                 {/* logo */}
                 <h1
@@ -65,11 +58,11 @@ export default function LinkList({ links, Open , generaleStyles}) {
           <li key={index} className="items-center w-full">
             <Link href={element.link}>
               <div
-                className={`flex items-center justify-between p-4 drop-shadow-xl rounded-xl hover:bg-zinc-300 hover:text-zinc-500 ${
+                className={`flex items-center justify-between p-3 drop-shadow-xl rounded-xl hover:bg-zinc-300 hover:text-zinc-500 ${
                   element.link === router.pathname && "border text-white"
                 } ${!Open && "p-0"}`}
                 onClick={() => {
-                  selectElement(element);
+                  setSelectedElement(element);
                 }}
               >
                 <div className="flex items-center gap-4">
@@ -86,7 +79,8 @@ export default function LinkList({ links, Open , generaleStyles}) {
                   src={Arrow}
                   alt="Arrow"
                   onClick={() => {
-                    setLinkOpen(!linkOpen);
+                    setLinkOpen((prev) => !prev);
+                    localStorage.setItem("LINK_IS_OPEN_VALUE", linkOpen);
                   }}
                   className={`${linkOpen ? "rotate-0" : "-rotate-180"}`}
                 />
@@ -97,21 +91,21 @@ export default function LinkList({ links, Open , generaleStyles}) {
                 linkOpen ? "flex flex-col items-end justify-end" : "hidden"
               }`}
             >
-              {element.children.map((child, index) => (
+              {element.childItems.map((child, index) => (
                 <li
                   key={index}
                   className={`items-center w-11/12 p-4 drop-shadow-xl rounded-xl ${
                     !Open && "hidden"
                   }`}
                   onClick={() => {
-                    selectChild(child);
+                    setSelectedChild(child);
                   }}
                 >
-                  <Link href={child.link}>
+                  <Link href={element.link+child.link}>
                     <div className="flex items-center gap-4">
                       <div
                         className={`w-2 h-2 rounded-full  ${
-                          child.link === router.pathname
+                          element.link+child.link === router.pathname
                             ? "bg-blue-600"
                             : "bg-slate-600"
                         }`}

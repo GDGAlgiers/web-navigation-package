@@ -39,12 +39,24 @@ export default function App({ Component, pageProps }) {
       link: "/qq3",
       name: "Chat",
       icon: Chat,
+      childItems: [
+        {
+          link: "/",
+          name: "Overview",
+          icon: "1",
+        },
+        {
+          link: "/",
+          name: "List",
+          icon: "2",
+        },
+      ],
     },
     {
       link: "/qq4",
       name: "Settings",
       icon: Settings,
-      children: [
+      childItems: [
         {
           link: "/overview",
           name: "Overview",
@@ -60,9 +72,11 @@ export default function App({ Component, pageProps }) {
   ];
 
   return (
-    <div>
+    <div className="flex">
       <Sidenavbar2 links={links} logo={logo} isLogedIn={islogedin} generaleStyles={generaleStyles} />
-      <Component {...pageProps} />
+      <div className="flex flex-1">
+        <Component {...pageProps} />
+      </div>
     </div>
   );
 }

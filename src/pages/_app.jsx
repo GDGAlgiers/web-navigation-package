@@ -18,12 +18,19 @@ import Collapse from "public/Images/template2/Subtract.svg";
 export default function App({ Component, pageProps }) {
   const generaleStyles = {
     textSize: "16px",
-    textColor: "0A1B39",
-    HoverColor: "bg-slate-500",
-    BorderColor: "black", 
+    textColor: "#0A1B39",
+    HoverTextColor: "rgb(113 113 122)",
+    HoverBgColor:"",
+    BorderColor: "#000",
+    BackgroundColor: "##E6E7EC",
+    ActiveTextColor: "rgb(37 99 235)",
   };
-  const islogedin = true;
-  const logo = Pic;
+  const user ={
+    name:"kate russel",
+    role:"project manager",
+    image:Pic,
+    isLogedIn : true
+  }
   const links = [
     {
       link: "/qq1",
@@ -61,7 +68,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <div>
-      <Sidenavbar2 links={links} logo={logo} isLogedIn={islogedin} generaleStyles={generaleStyles} />
+      <Sidenavbar2 links={links} generaleStyles={generaleStyles} user={user}/>
       <Component {...pageProps} />
     </div>
   );

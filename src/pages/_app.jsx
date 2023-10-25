@@ -24,34 +24,34 @@ export default function App({ Component, pageProps }) {
   }
   const links = [
     {
-      link: "/qq1",
+      link: "/page1",
       name: "Overview",
       icon: Overview,
     },
     {
-      link: "/qq2",
+      link: "/page2",
       name: "Calendar",
       icon: Calendar,
     },
     {
-      link: "/qq3",
+      link: "/page3",
       name: "Chat",
       icon: Chat,
       childItems: [
         {
-          link: "/",
+          link: "/overview",
           name: "Overview",
           icon: "1",
         },
         {
-          link: "/",
+          link: "/list",
           name: "List",
           icon: "2",
         },
       ],
     },
     {
-      link: "/qq4",
+      link: "/page4",
       name: "Settings",
       icon: Settings,
       childItems: [

@@ -1,39 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Arrow from "public/Images/template2/Down.svg";
-import Gift from "public/Images/template2/Gift.svg";
-import Gift1 from "public/Images/template2/Gift1.svg";
-import Gift2 from "public/Images/template2/Gift2.svg";
+
 import { useRouter } from "next/router";
+import ItemChildrenList from "./ItemChildrenList";
 
 export default function LinkList({ links, Open , generaleStyles}) {
-  const [linkOpen, setLinkOpen] = useState(true);
   const [selectedElement, setSelectedElement] = useState(null);
   const [selectedChild, setSelectedChild] = useState(null);
   const {
     textSize,
     textColor,
-    HoverColor,
-    BorderColor,
     BackgroundColor,
     ActiveTextColor,
   } = generaleStyles;
   const router = useRouter();
 
-  useEffect(() => {
-    const data = localStorage.getItem("LINK_IS_OPEN_VALUE");
-    if (data) {
-      console.log(data);
-      setLinkOpen(() => !!data);
-    } else {
-      localStorage.setItem("LINK_IS_OPEN_VALUE", true);
-    }
-  }, []);
-
   return (
     <ul
-      className={`flex flex-col gap-1 ${Open && "mt-8"}`}
+      className={`flex flex-col gap-1 px-1 ${Open && "mt-8"}`}
       style={{ color: `${textColor}`, fontSize: `${textSize}` }}
     >
       {links.map((element, index) =>
@@ -55,12 +40,12 @@ export default function LinkList({ links, Open , generaleStyles}) {
             }}
           >
             <Link href={element.link}>
-              <div className="flex items-center gap-4 p-3">
+              <div className={`flex items-center gap-2 md:gap-4 p-3 ${(!Open) && 'justify-center'}`}>
                 <Image src={element.icon} alt={element.name} />
                 {/* logo */}
                 <h1
-                  className={`text-lg font-medium duration-300  ${
-                    !Open && "scale-0"
+                  className={`flex text-lg font-medium duration-300  ${
+                    !Open && "hidden"
                   }`}
                 >
                   {element.name}
@@ -70,95 +55,15 @@ export default function LinkList({ links, Open , generaleStyles}) {
           </li>
         ) : (
           /* If the item has children */
-          <li key={index} className="items-center w-full">
-            <Link href={element.link}>
-              <div
-                className={`flex items-center justify-between p-3 drop-shadow-xl rounded-xl hover:bg-zinc-300 hover:text-zinc-500 ${
-                  element.link === router.pathname && "border text-white"
-                } ${!Open && "p-0"}`}
-                onClick={() => {
-                  setSelectedElement(element);
-                }}
-              >
-                <div className="flex items-center gap-4">
-                  <Image src={element.icon} alt={element.name} />
-                  <h1
-                    className={`text-lg font-medium duration-300  ${
-                      !Open && "scale-0"
-                    }`}
-                    style={{ color: `${textColor}` }}
-                  >
-                    {element.name}
-                  </h1>
-                </div>
-                <Image
-                  src={Arrow}
-                  alt="Arrow"
-                  onClick={() => {
-                    setLinkOpen((prev) => !prev);
-                    localStorage.setItem("LINK_IS_OPEN_VALUE", linkOpen);
-                  }}
-                  className={`${linkOpen ? "rotate-0" : "-rotate-180"}`}
-                />
-              </div>
-            </Link>
-            <ul
-              className={`${
-                linkOpen ? "flex flex-col items-end justify-end" : "hidden"
-              }`}
-            >
-              {element.childItems.map((child, index) => (
-                <li
-                  key={index}
-                  className={`items-center w-11/12 p-4 drop-shadow-xl rounded-xl ${
-                    !Open && "hidden"
-                  }`}
-                  onClick={() => {
-                    setSelectedChild(child);
-                  }}
-                >
-                  <Link href={element.link + child.link}>
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`w-2 h-2 rounded-full  duration-300 `}
-                        style={{
-                          backgroundColor: `${
-                            element.link + child.link === router.pathname
-                              ? ActiveTextColor
-                              : textColor
-                          }`,
-                          opacity: `${
-                            element.link + child.link === router.pathname
-                              ? 1
-                              : 0.7
-                          }`,
-                        }}
-                      />
-                      <h1
-                        className={`text-lg font-medium duration-300 ${
-                          !Open && "scale-0"
-                        }`}
-                        style={{
-                          color: `${
-                            element.link + child.link === router.pathname
-                              ? ActiveTextColor
-                              : textColor
-                          }`,
-                          opacity: `${
-                            element.link + child.link === router.pathname
-                              ? 1
-                              : 0.7
-                          }`,
-                        }}
-                      >
-                        {child.name}
-                      </h1>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </li>
+          <ItemChildrenList
+            key={index}
+            element={element}
+            setSelectedElement={setSelectedElement}
+            textColor={textColor}
+            setSelectedChild={setSelectedChild}
+            ActiveTextColor={ActiveTextColor}
+            Open={Open}
+          />
         )
       )}
     </ul>

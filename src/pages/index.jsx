@@ -107,7 +107,7 @@ const Home = () => {
 
   return (
     <div className="">
-      <NavbarThree
+      {/* <NavbarThree
         logo={nvb3Logo}
         logoWidth="70px"
         logoHeight=""
@@ -119,7 +119,7 @@ const Home = () => {
         navBgColor="#dddddd"
         navHeight="80px"
         mobileSideBarBg="#fff"
-      />
+      /> */}
       {/* <SideBarWithSearch
         logo={<Image src={logo} alt="logo" />}
         name="ModGallery"

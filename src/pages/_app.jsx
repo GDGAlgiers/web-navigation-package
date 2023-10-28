@@ -4,24 +4,24 @@ import Pic from "public/Images/template2/picture.png";
 import Calendar from "public/Images/template2/Calendar.svg";
 import Overview from "public/Images/template2/Grid_Four.svg";
 import Chat from "public/Images/template2/Chat_Dots.svg";
-import Settings from "public/Images/template2/Settings.svg";
+import Settings from "public/Images/template2/settings.svg";
 
 export default function App({ Component, pageProps }) {
   const generaleStyles = {
     textSize: "16px",
     textColor: "#0A1B39",
     HoverTextColor: "rgb(113 113 122)",
-    HoverBgColor:"",
+    HoverBgColor: "",
     BorderColor: "#000",
     BackgroundColor: "##E6E7EC",
     ActiveTextColor: "rgb(37 99 235)",
   };
-  const user ={
-    name:"kate russel",
-    role:"project manager",
-    image:Pic,
-    isLogedIn : true
-  }
+  const user = {
+    name: "kate russel",
+    role: "project manager",
+    image: Pic,
+    isLogedIn: true,
+  };
   const links = [
     {
       link: "/page1",

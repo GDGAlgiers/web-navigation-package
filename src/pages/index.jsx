@@ -1,6 +1,5 @@
 import Navbar from "@/components/template1/Navbar";
 import Navbar2 from "@/components/template2/Navbar";
-import logo from "public/Images/template1/Navbar/logo-botw.png";
 import profilpic from "public/Images/template1/Navbar/profilpic.svg";
 import settingsIcon from "public/images/template2/settings.svg";
 import uploadIcon from "public/images/template2/upload.svg";

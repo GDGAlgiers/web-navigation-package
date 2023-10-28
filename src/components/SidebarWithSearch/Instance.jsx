@@ -1,20 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const Instance = ({imageSource ,imageAlt,instanceText, isSelected , isExpanded,onClick })=>{
+const Instance = ({image, instanceText, isSelected ,link, isExpanded, onClick, textColor, textSize,activeTextColor,activeBg,bg })=>{
     return (
-        <div 
-        className={`flex items-center hover:cursor-pointer bg-[#171918] w-full h-[6vh] relative ${isExpanded ? "gap-4 px-12" : "justify-center"}`}
-        onClick={onClick}
+        <Link
+            href={link}
+            className={`flex items-center hover:cursor-pointer bg-[#171918] w-full h-[6vh] relative ${isExpanded ? "gap-4 px-12" : "justify-center"}`}
+            onClick={onClick}
+            style={{backgroundColor:bg}}
         >
-            {isSelected && <div className="absolute top-0 right-0 w-[5px] bg-[#27AE60] h-full rounded-l" />}
-            <Image
-            src={imageSource}
-            alt={imageAlt}
-            className="text-[#27AE60]"
-            width={15}
-            />
-            {isExpanded && <h1 className={isSelected ? "text-white text-sm" : "text-[#969998] text-sm"}>{instanceText}</h1>}
-        </div>
+            {isSelected && <div style={{backgroundColor:activeBg}} className="absolute top-0 right-0 w-[5px] h-full rounded-l" />}
+            {image}
+            {isExpanded && <h1 style={{color:isSelected ? activeTextColor : textColor, fontSize:textSize}} >{instanceText}</h1>}
+        </Link>
     );
 }
 

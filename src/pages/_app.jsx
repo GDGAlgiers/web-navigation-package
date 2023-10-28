@@ -71,7 +71,6 @@ export default function App({ Component, pageProps }) {
 
   return (
     <div className="flex">
-      <Sidenavbar2 links={links} generaleStyles={generaleStyles} user={user}/>
       <div className="flex flex-1">
         <Component {...pageProps} />
       </div>

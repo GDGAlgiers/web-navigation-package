@@ -1,9 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import msg from "public/Images/template3/chat.svg";
-import setting from "public/Images/template3/setting.svg";
-import notif from "public/Images/template3/bell.svg";
-import logout from "public/Images/template3/sign-out.svg";
 import { useRouter } from "next/router";
 
 const Sidenavbar3 = (props) => {
@@ -73,12 +69,12 @@ const Sidenavbar3 = (props) => {
       </div>
 
       <div className="w-32 fixed top-0 scroll flex-col gap-5 items-center bg-white h-screen max-h-screen p-5 px-2 flex lg:hidden ">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-start items-center">
           <Image alt="logo" src={logo} />
         </div>
         <div
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
-          className="flex w-full font-medium flex-col gap-3 mt-5 "
+          className="flex w-full font-medium flex-col gap-2 mt-4 "
         >
           {links.map((link, index) => {
             return (

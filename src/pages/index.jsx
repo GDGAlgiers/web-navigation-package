@@ -44,6 +44,7 @@ const Home = () => {
           { link: "#", name: "settings", icon: settingsIcon },
           { link: "#", name: "upload", icon: uploadIcon },
         ]}
+        isLoggedIn
       />
     </div>
   );

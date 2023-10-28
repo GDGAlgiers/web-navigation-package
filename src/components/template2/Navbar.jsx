@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import defaultLogo from "public/images/template2/logo.png";
-import avatar from "public/images/template2/avatar.png";
+import avatarPicture from "public/images/template2/avatar.png";
 import searchIcon from "public/images/template2/search.svg";
 
 import { GiHamburgerMenu as HamMenu } from "react-icons/gi";
+import { BsThreeDotsVertical as KebabMenu } from "react-icons/bs";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 import Link from "next/link";
 import MobileSearch from "./MobileSearch";
@@ -12,14 +13,32 @@ import MobileMenu from "./MobileMenu";
 
 function Navbar(props) {
   const {
+    avatar = { picture: avatarPicture, link: "#" }, //avatar: {picture,link}
     logo = defaultLogo,
-    links = [],
-    generaleStyles,
-    mobileSettings,
+    isLoggedIn = false,
+    loginButton = { text: "Get started", link: "#" }, //loginButton: {text,link}
+    links = [], //links: [{link,name,icon}]
+    generaleStyles: { textColor, textSize } = {},
+    mobileSettings: { menuType = "hamburger" } = {}, //menuType: "hamburger" | "kebab",
   } = props;
 
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const menuMap = {
+    kebab: () => (
+      <KebabMenu
+        className="lg:hidden h-6 w-auto cursor-pointer"
+        onClick={handleOpenMenu}
+      />
+    ),
+    hamburger: () => (
+      <HamMenu
+        className="lg:hidden h-6 w-auto cursor-pointer"
+        onClick={handleOpenMenu}
+      />
+    ),
+  };
 
   const handleOpenMenu = () => {
     setMenuOpen(true);
@@ -27,7 +46,10 @@ function Navbar(props) {
   };
 
   return (
-    <div className="relative w-screen ">
+    <div
+      className="relative w-screen "
+      style={{ textColor: textColor || "#2D2E2E", fontSize: textSize || 16 }}
+    >
       <div className="flex  justify-between items-center bg-white h-24 w-full 2xl:px-16 xl:px-8 px-4">
         <div className="flex items-center justify-start h-ful xl:gap-20 2xl:gap-24 gap-10">
           {menuOpen ? (
@@ -36,10 +58,7 @@ function Navbar(props) {
               onClick={() => setMenuOpen(false)}
             />
           ) : (
-            <HamMenu
-              className="lg:hidden h-6 w-auto cursor-pointer"
-              onClick={handleOpenMenu}
-            />
+            menuMap[menuType]()
           )}
 
           <Image src={logo} alt="logo" className=" h-20" />
@@ -76,9 +95,17 @@ function Navbar(props) {
           >
             <Image src={searchIcon} />
           </button>
-          <Link href="#">
-            <Image src={avatar} />
-          </Link>
+          {isLoggedIn ? (
+            <Link href={avatar.link}>
+              <Image src={avatar.picture} className="h-14 w-14 rounded-full" />
+            </Link>
+          ) : (
+            <Link href={loginButton.link}>
+              <button className="bg-[#3A4F39] rounded-md px-4 py-3 text-white">
+                {loginButton.text}
+              </button>
+            </Link>
+          )}
         </div>
       </div>
       {/* mobile menu */}

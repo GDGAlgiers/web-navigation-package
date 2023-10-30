@@ -1,5 +1,5 @@
-import "@/styles/globals.css";
-import Sidenavbar2 from "@/components/template2/SideNavBar";
+import "../styles/globals.css";
+import Sidenavbar2 from "../components/template2/SideNavBar";
 import Pic from "public/Images/template2/picture.png";
 import Calendar from "public/Images/template2/Calendar.svg";
 import Overview from "public/Images/template2/Grid_Four.svg";

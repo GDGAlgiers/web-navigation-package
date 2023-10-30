@@ -1,12 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import msg from "public/Images/template3/chat.svg";
-import setting from "public/Images/template3/setting.svg";
-import notif from "public/Images/template3/bell.svg";
-import logout from "public/Images/template3/sign-out.svg";
 import { useRouter } from "next/router";
 import frame from "public/Images/template4/Frame.png"
-const SideNavbar4 = (props) => {
+
+interface ISideNavbar4Props{
+logo:any,
+Name:string,
+links:any,
+Pages:  {
+  name: string;
+  route: string;
+  Child? : {
+    name: string;
+    route: string;
+}[];
+}[],
+textSize:any,
+Userlinks:any,
+ActivetextColor:any,
+ActiveBg:any,
+textColor:any
+}
+const SideNavbar4 = (props:ISideNavbar4Props) => {
   const {
     logo,
     Name,
@@ -32,7 +47,7 @@ const SideNavbar4 = (props) => {
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
           className="flex w-full font-medium flex-col gap-2 mt-3 "
         >
-          {links.map((link, index) => {
+          {links.map((link:any, index:number) => {
             return (
               <Link key={index} href={link.route}>
                 <div
@@ -61,7 +76,7 @@ const SideNavbar4 = (props) => {
         >
           <h2 className="text-[#7C7B84] text-xs mb-1 "> SHORCUTS </h2>
           {Userlinks &&
-            Userlinks.map((Userlink, index) => {
+            Userlinks.map((Userlink:any, index:number) => {
               return (
                 <Link key={index} href={Userlink.route}>
                   <div className="p-2 flex items-center gap-2">
@@ -78,7 +93,7 @@ const SideNavbar4 = (props) => {
         >
           <h2 className="text-[#7C7B84] text-xs mb-1 "> PAGES </h2>
           {Pages &&
-            Pages.map((Page, index) => {
+            Pages.map((Page:any, index:number) => {
               return (
                 <>
                 <Link key={index} href={Page.route}>
@@ -101,7 +116,7 @@ const SideNavbar4 = (props) => {
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
           className="flex w-full font-medium flex-col gap-3 mt-5 "
         >
-          {links.map((link, index) => {
+          {links.map((link:any, index:number) => {
             return (
               <Link key={index} href={link.route}>
                 <div className={`flex justify-center p-1 `}>{link.icon}</div>
@@ -113,7 +128,7 @@ const SideNavbar4 = (props) => {
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
           className="flex w-full font-medium flex-col gap-3 mt-8 "
         >
-          {Userlinks.map((Userlink, index) => {
+          {Userlinks.map((Userlink:any, index:number) => {
             return (
               <Link key={index} href={Userlink.route}>
                 <div className="flex justify-center p-1 ">
@@ -128,7 +143,7 @@ const SideNavbar4 = (props) => {
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
           className="flex w-full font-medium flex-col gap-3 mt-8 "
         >
-          {Userlinks.map((Userlink, index) => {
+          {Userlinks.map((Userlink:any, index:number) => {
             return (
               <Link key={index} href={Userlink.route}>
                 <div className=" flex justify-center p-1 ">

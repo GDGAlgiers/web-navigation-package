@@ -1,8 +1,10 @@
 import Image from "next/image";
 import searchLoop from "../../../public/Images/SideBarWithSearch/search_logo.svg";
 import {useRef, useState} from "react";
-
-const SearchField = ({isExpanded ,searchBarCustomization, toggleSidebar,onSearch}) => {
+interface props{
+  isExpanded:boolean ,searchBarCustomization:any, toggleSidebar:any,onSearch:any
+}
+const SearchField = ({isExpanded , toggleSidebar,onSearch}:props) => {
   const inputRef = useRef(null);
   const handleImageClick = () => {
     if (inputRef.current) {
@@ -10,21 +12,19 @@ const SearchField = ({isExpanded ,searchBarCustomization, toggleSidebar,onSearch
       toggleSidebar();
     }
   };
-  const {placeholder,bg ,textColor, textSize, options} = searchBarCustomization;
   return (
       <div
           className="relative w-[75%] flex justify-center cursor-text rounded-lg"
-          style={{backgroundColor:bg}}
+          style={{backgroundColor:"#3A3B3B"}}
       >
         <input 
           ref={inputRef}
           type="text"
           className={"block p-2.5 pl-6 outline-none appearance-none rounded-lg" + (isExpanded ? " w-3/4" : " w-10")}
-          placeholder={isExpanded ? placeholder : ""}
+          placeholder={isExpanded ? "search" : ""}
           onFocus={toggleSidebar}
           onChange={(e)=>onSearch(e.target.value)}
-          style={{backgroundColor:bg , fontSize:textSize, color:textColor}}
-          {...options}
+          style={{backgroundColor:"#3A3B3B" , fontSize:"0.8rem", color:"#7F8080"}}
         />
         <Image
           src={searchLoop}

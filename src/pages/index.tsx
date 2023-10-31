@@ -142,19 +142,9 @@ const Home = () => {
       logoTextSize:"1.25rem",
       textColor:"#969998",
       activeTextColor:"white",
-      bg:"#171918",
+      background:"#171918",
       activeBg:"#27AE60",
   }
-
-
-  const searchBarCustomization = {
-      placeholder:"search instances",
-      options:{},
-      bg:"#3A3B3B",
-      textSize: "0.8rem",
-      textColor: "#7F8080",
-  }
-
   const logoInfo={
     logoIcon:<Image src={logo} alt="logo" />,
     title:"ModGallery",
@@ -165,8 +155,8 @@ const Home = () => {
     optionsLinks:options,
     profileInformation:profileInformation,
     logo:logoInfo,
-    searchBarCustomization:searchBarCustomization,
-    generalStyles:generalStyles
+    generalStyles:generalStyles,
+    logout:()=>{console.log("test")},
 
   }
   return (
@@ -184,7 +174,6 @@ const Home = () => {
       /> */}
       <SideBarWithSearch 
       logo={template1SidnavType.logo}
-      searchBarCustomization={template1SidnavType.searchBarCustomization}  
       profileInformation={template1SidnavType.profileInformation} 
       mainLinks={template1SidnavType.mainLinks} 
       settingsLinks={template1SidnavType.settingsLinks} 

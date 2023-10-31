@@ -24,7 +24,7 @@ const SearchField = ({isExpanded , toggleSidebar,onSearch}:props) => {
           placeholder={isExpanded ? "search" : ""}
           onFocus={toggleSidebar}
           onChange={(e)=>onSearch(e.target.value)}
-          style={{backgroundColor:bg , fontSize:"0.8rem", color:"#7F8080"}}
+          style={{backgroundColor:"#3A3B3B" , fontSize:"0.8rem", color:"#7F8080"}}
         />
         <Image
           src={searchLoop}

@@ -1,13 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 import { useRouter } from "next/router";
 import ItemChildrenList from "./ItemChildrenList";
+import { ListLink } from "../../types/linkType";
+import { generaleStyle } from "../../types/generaleStyleType";
 
-export default function LinkList({ links, Open, setOpen, generaleStyles}) {
-  const [selectedElement, setSelectedElement] = useState(null);
-  const [selectedChild, setSelectedChild] = useState(null);
+type Props = {
+  links: ListLink[],
+  Open: boolean,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  generaleStyles: generaleStyle
+}
+
+export default function LinkList({ links, Open, setOpen, generaleStyles } : Props) {
+  const [selectedElement, setSelectedElement] = useState<ListLink | null>(null);
+  const [selectedChild, setSelectedChild] = useState<ListLink | null>(null);
   const {
     textSize,
     textColor,
@@ -39,7 +48,7 @@ export default function LinkList({ links, Open, setOpen, generaleStyles}) {
               }`,
             }}
           >
-            <Link href={element.link}>
+            <Link href={element.link as string}>
               <div className={`flex items-center gap-2 md:gap-4 p-3 ${(!Open) && 'justify-center'}`}>
                 <Image src={element.icon} alt={element.name} />
                 {/* logo */}
@@ -61,7 +70,7 @@ export default function LinkList({ links, Open, setOpen, generaleStyles}) {
             setSelectedElement={setSelectedElement}
             textColor={textColor}
             setSelectedChild={setSelectedChild}
-            ActiveTextColor={ActiveTextColor}
+            ActiveTextColor={ActiveTextColor || "rgb(37 99 235)"}
             Open={Open}
             setOpen={setOpen}
           />

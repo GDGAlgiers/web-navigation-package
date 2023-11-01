@@ -155,12 +155,12 @@ const Home = () => {
     optionsLinks:options,
     profileInformation:profileInformation,
     logo:logoInfo,
-    generalStyles:generalStyles,
+    generalStyles,
     logout:()=>{console.log("test")},
 
   }
   return (
-    <div className="w-full h-[150vh] bg-black">
+    <div className="w-full h-screen bg-black">
       {/* <SideNavbar4
         logo={logo}
         Name="Social Blade"
@@ -173,12 +173,14 @@ const Home = () => {
         Pages={Pages}
       /> */}
       <SideBarWithSearch 
-      logo={template1SidnavType.logo}
-      profileInformation={template1SidnavType.profileInformation} 
-      mainLinks={template1SidnavType.mainLinks} 
-      settingsLinks={template1SidnavType.settingsLinks} 
-      optionsLinks={template1SidnavType.optionsLinks}
-      generalStyles={generalStyles}/>
+        logo={template1SidnavType.logo}
+        profileInformation={template1SidnavType.profileInformation} 
+        mainLinks={template1SidnavType.mainLinks} 
+        settingsLinks={template1SidnavType.settingsLinks} 
+        optionsLinks={template1SidnavType.optionsLinks}
+        generalStyles={generalStyles}
+        logout={() => console.log("done...")}  
+      />
     </div>
   );
 };

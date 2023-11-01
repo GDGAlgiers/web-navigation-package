@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+const nextConfig = {
+  reactStrictMode: true,
   webpack(config) {
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
   }
-};
+}
+
+module.exports = nextConfig

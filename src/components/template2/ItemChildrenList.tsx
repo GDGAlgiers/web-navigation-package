@@ -1,10 +1,29 @@
 import Link from "next/link";
 import Arrow from "public/Images/template2/Down.svg";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
+import { ListLink } from "../../types/linkType";
 
-const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedChild, ActiveTextColor, Open, setOpen }) => {
+type Props = {
+    element: ListLink,
+    setSelectedElement: Dispatch<SetStateAction<ListLink | null>>,
+    textColor: string,
+    setSelectedChild: Dispatch<SetStateAction<ListLink | null>>,
+    ActiveTextColor: string,
+    Open: boolean,
+    setOpen: Dispatch<SetStateAction<boolean>>
+}
+
+const ItemChildrenList = ({
+    element,
+    setSelectedElement,
+    textColor,
+    setSelectedChild,
+    ActiveTextColor,
+    Open,
+    setOpen
+} : Props) => {
 
     const router = useRouter();
 
@@ -12,7 +31,7 @@ const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedC
 
     return (
         <li className="items-center">
-            <Link href={element.link}>
+            <Link href={element.link as string}>
                 <div
                     className={`flex items-center p-3 drop-shadow-xl rounded-xl hover:bg-zinc-300 hover:text-zinc-500 ${
                     element.link === router.pathname && "border text-white"
@@ -48,7 +67,7 @@ const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedC
                 isOpen ? "flex flex-col items-end justify-end" : "hidden"
             }`}
             >
-            {element.childItems.map((child, index) => (
+            {element.childItems?.map((child, index) => (
                 <li
                 key={index}
                 className={`flex items-center w-11/12 p-4 drop-shadow-xl rounded-xl hover:bg-zinc-300 ${
@@ -58,18 +77,18 @@ const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedC
                     setSelectedChild(child);
                 }}
                 >
-                    <Link href={element.link + child.link}>
+                    <Link href={element.link as string + child.link}>
                         <div className="flex items-center gap-4">
                         <div
                             className={`w-2 h-2 rounded-full duration-300 `}
                             style={{
                             backgroundColor: `${
-                                element.link + child.link === router.pathname
+                                element.link as string + child.link === router.pathname
                                 ? ActiveTextColor
                                 : textColor
                             }`,
                             opacity: `${
-                                element.link + child.link === router.pathname
+                                element.link as string + child.link === router.pathname
                                 ? 1
                                 : 0.7
                             }`,
@@ -81,12 +100,12 @@ const ItemChildrenList = ({ element, setSelectedElement, textColor, setSelectedC
                                 }`}
                                 style={{
                                 color: `${
-                                    element.link + child.link === router.pathname
+                                    element.link as string + child.link === router.pathname
                                     ? ActiveTextColor
                                     : textColor
                                 }`,
                                 opacity: `${
-                                    element.link + child.link === router.pathname
+                                    element.link as string + child.link === router.pathname
                                     ? 1
                                     : 0.7
                                 }`,

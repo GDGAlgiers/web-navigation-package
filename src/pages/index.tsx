@@ -25,50 +25,12 @@ import notif from "public/Images/template3/bell.svg";
 import history from "public/Images/template3/clock-five.svg";
 import profil from "public/Images/template3/profilpic.svg";
 import Sidenavbar3 from "../components/template3/SideNabBar";
-import logo from "public/Images/template3/Logo.svg";
-// export interface template1SidnavType{
-//   generaleLink:links[],
-//   settingLinks:links[],
-//   instanceLink:links[],
-//   userInfo:userInfo,
-//   search:(value:string)=>void,
-//   logo:LogoInfo,
-//   generaleStyle?:generaleStyle
+import Navbar from "@/components/template1/Navbar";
+import logo from "public/Images/template1/Navbar/logo-botw.png";
+import profilpic from "public/Images/template1/Navbar/profilpic.svg";
 
-// }
 const Home = () => {
-  const links = [
-    {
-      name: "Home",
-      link: "/",
-      icon: <Image alt="home" src={home} />,
-    },
-    {
-      name: "Dashboard",
-      link: "/Dashboard",
-      icon: <Image alt="home" src={Dashboard} />,
-    },
-    {
-      name: "Products",
-      link: "/Products",
-      icon: <Image alt="box" src={Box} />,
-    },
-    {
-      name: "Analytics",
-      link: "/Analytics",
-      icon: <Image alt="analysis" src={analysis} />,
-    },
-    {
-      name: "History",
-      link: "/History",
-      icon: <Image alt="history" src={history} />,
-    },
-    {
-      name: "Sales",
-      link: "/Sales",
-      icon: <Image alt="Sales" src={money} />,
-    },
-  ];
+
   const Userlinks = [
     {
       name: "Message",
@@ -86,75 +48,20 @@ const Home = () => {
       name: "Settings",
       link: "/setting",
       icon: <Image alt="setting" src={setting} />,
-      notif:0
+      notif: 0,
     },
     {
       name: "Log out",
       link: "/logout",
       icon: <Image alt="logout" src={logout} />,
-      notif:0
+      notif: 0,
     },
   ];
   const user = {
-    name: "Michael Smith",
-    additionalInfo: "michaelsmith12@gmail.com",
-    image: profil,
+    image: profilpic,
   };
 
-  const profileInformation = {
-    image: <Image src={profilePicture} alt="profile picture" />,
-    name: "John Doe",
-    additionalInfo: "MadGallery Basic",
-  };
 
-  const settings = [
-    {
-      icon: <Image src={settingsPic} alt="settings" />,
-      name: "settings",
-      link: "/settings",
-    },
-    {
-      icon: <Image src={faq} alt="FAQ" />,
-      name: "FAQ",
-      link: "/faq",
-    },
-  ];
-
-  const options = [
-    {
-      icon: <Image src={heart} alt="fav" />,
-      name: "Favourites",
-      link: "/favourites",
-    },
-    {
-      icon: <Image src={gallery} alt="gallery" />,
-      name: "My gallery",
-      link: "/gallery",
-    },
-    {
-      icon: <Image src={cart} alt="cart" />,
-      name: "My Cart",
-      link: "/cart",
-    },
-  ];
-
-  const instances = [
-    {
-      icon: <Image src={weeklyTop} alt="weekly top" width={15} />,
-      name: "Weekly top",
-      link: "/weekly-top",
-    },
-    {
-      icon: <Image src={singleObjects} alt="Single objects" width={15} />,
-      name: "Single objects",
-      link: "/single-objects",
-    },
-    {
-      icon: <Image src={objectsSets} alt="Objects sets" width={15} />,
-      name: "Objects sets",
-      link: "/objects-sets",
-    },
-  ];
   const generalStyles = {
     textSize: "0.75rem",
     logoTextSize: "1.25rem",
@@ -163,45 +70,40 @@ const Home = () => {
     background: "#171918",
     activeBg: "#27AE60",
   };
-  const logoInfo = {
-    logoIcon: <Image src={logo} alt="logo" />,
-    title: "ModGallery",
-  };
-  const template1SidnavType: template1SidnavType = {
-    mainLinks: instances,
-    settingsLinks: settings,
-    optionsLinks: options,
-    profileInformation: profileInformation,
-    logo: logoInfo,
-    generalStyles: generalStyles,
-    logout: () => {
-      console.log("test");
-    },
+ 
+  const LogoInf = {
+    logoIcon: logo,
   };
 
-  const LogoInf={
-    title:"Social Blade",
-    logoIcon:logo
-  }
+  const links = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Landing",
+      link: "/landing",
+    },
+    {
+      name: "About",
+      link: "/About",
+    },
+    {
+      name: "Contact",
+      link: "/",
+    },
+  ];
   return (
     <div className="w-full h-screen bg-black">
-      {/* <SideNavbar4
-        logo={logo}
-        Name="Social Blade"
-        textSize="14px"
-        textColor="red"
-        ActivetextColor="green"
-        ActiveBg="red"
-        Userlinks={Userlinks}
+      <Navbar
+      loggedIn
         links={links}
-        Pages={Pages}
-      /> */}
-      <Sidenavbar3
+        loginRoute="/login"
+        Style={generalStyles}
+        menuType="bottom-bar"
+        SignInRoute="/Signin"
        LogoInf={LogoInf}
-       Style={generalStyles}
-        Userlinks={Userlinks}
-        links={links}
-        User={user}
+       User={user}
       />
     </div>
   );

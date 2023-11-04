@@ -8,5 +8,6 @@ export interface generaleStyle{
     HoverBgColor?: string,
     BackgroundColor?: string,
     ActiveTextColor?: string,
-    BorderColor?: string
+    BorderColor?: string,
+    ButtonColor?:string
 }

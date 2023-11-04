@@ -1,7 +1,12 @@
 export interface generaleStyle{
     textColor:string
-    activeTextColor:string
-    activeBg:string
-    background:string
-    textSize:string
+    activeBg?:string
+    activeTextColor?:string
+    background?:string
+    textSize:string,
+    HoverTextColor?: string,
+    HoverBgColor?: string,
+    BackgroundColor?: string,
+    ActiveTextColor?: string,
+    BorderColor?: string
 }

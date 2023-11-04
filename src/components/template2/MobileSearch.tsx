@@ -1,14 +1,18 @@
 import Image from "next/image";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import searchIcon from "public/images/template2/search.svg";
 
-function MobileSearch({ setOpen }) {
+type Props = {
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
+
+function MobileSearch({ setOpen } : Props) {
   return (
     <div className="absolute py-5 flex justify-center gap-4 items-center w-full h-auto bg-white top-full left-0">
       <div
         className={`flex w-64 h-12 items-center border border-[#696969] rounded-[100px] justify-between p-4 bg-Light-grey-input text-[#696969]`}
       >
-        <Image src={searchIcon} />
+        <Image src={searchIcon} alt="Search Icon" />
         <input
           type="text"
           placeholder="Search"

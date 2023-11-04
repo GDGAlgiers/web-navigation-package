@@ -1,4 +1,4 @@
-interface LogoInfo{
+export interface LogoInfo{
     title?:string
     logoIcon:any
 }

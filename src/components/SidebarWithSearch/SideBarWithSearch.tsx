@@ -1,8 +1,8 @@
-import Footer from "./Footer.tsx";
+import Footer from "./Footer";
 import Header from "./Header";
 import InstancesSection from "./InstancesSection";
-import SettingsSection from "./SettingsSection.tsx";
-import OptionsSection from "./OptionsSection.tsx";
+import SettingsSection from "./SettingsSection";
+import OptionsSection from "./OptionsSection";
 import React, { useState} from 'react';
 import { generaleStyle } from "../../types/generaleStyleType";
 import { userInfo } from "../../types/userInfoType";

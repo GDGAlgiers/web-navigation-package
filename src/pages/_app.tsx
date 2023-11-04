@@ -1,27 +1,28 @@
-import "../styles/globals.css";
-import Sidenavbar2 from "../components/template2/SideNavBar";
+import "@/styles/globals.css";
+import type { AppProps } from 'next/app'
+import Sidenavbar2 from "@/components/template2/SideNavBar";
 import Pic from "public/Images/template2/picture.png";
 import Calendar from "public/Images/template2/Calendar.svg";
 import Overview from "public/Images/template2/Grid_Four.svg";
 import Chat from "public/Images/template2/Chat_Dots.svg";
-import Settings from "public/Images/template2/settings.svg";
+import Settings from "public/Images/template2/Settings.svg";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps } : AppProps) {
   const generaleStyles = {
     textSize: "16px",
     textColor: "#0A1B39",
     HoverTextColor: "rgb(113 113 122)",
-    HoverBgColor: "",
+    HoverBgColor:"",
     BorderColor: "#000",
     BackgroundColor: "##E6E7EC",
     ActiveTextColor: "rgb(37 99 235)",
   };
   const user = {
-    name: "kate russel",
-    role: "project manager",
-    image: Pic,
-    isLogedIn: true,
-  };
+    name:"kate russel",
+    role:"project manager",
+    image:Pic,
+    isLogedIn : true
+  }
   const links = [
     {
       link: "/page1",
@@ -70,7 +71,8 @@ export default function App({ Component, pageProps }) {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex h-fit">
+      <Sidenavbar2 links={links} generaleStyles={generaleStyles} user={user}/>
       <div className="flex flex-1">
         <Component {...pageProps} />
       </div>

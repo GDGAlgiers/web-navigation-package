@@ -184,7 +184,7 @@ const Home = () => {
     logoIcon:logo
   }
   return (
-    <div className="w-full h-[150vh] bg-black">
+    <div className="w-full h-screen bg-black">
       {/* <SideNavbar4
         logo={logo}
         Name="Social Blade"

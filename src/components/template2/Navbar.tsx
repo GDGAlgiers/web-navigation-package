@@ -10,8 +10,20 @@ import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 import Link from "next/link";
 import MobileSearch from "./MobileSearch";
 import MobileMenu from "./MobileMenu";
+import { generaleStyle } from "../../types/generaleStyleType";
+import { ListLink } from "../../types/linkType";
 
-function Navbar(props) {
+type Props = {
+  avatar: { picture: string, link: string },
+  logo: any,
+  isLoggedIn: boolean,
+  loginButton: { text: string, link: string },
+  links: ListLink[],
+  generaleStyles: generaleStyle,
+  mobileSettings: {menuType: "hamburger" | "kebab"}
+}
+
+function Navbar(props : Props) {
   const {
     avatar = { picture: avatarPicture, link: "#" }, //avatar: {picture,link}
     logo = defaultLogo,
@@ -48,7 +60,7 @@ function Navbar(props) {
   return (
     <div
       className="relative w-screen "
-      style={{ textColor: textColor || "#2D2E2E", fontSize: textSize || 16 }}
+      style={{ color: textColor || "#2D2E2E", fontSize: textSize || 16 }}
     >
       <div className="flex  justify-between items-center bg-white h-24 w-full 2xl:px-16 xl:px-8 px-4">
         <div className="flex items-center justify-start h-ful xl:gap-20 2xl:gap-24 gap-10">
@@ -72,7 +84,7 @@ function Navbar(props) {
               placeholder="Search"
               className="bg-transparent outline-none pr-4 flex-grow"
             />
-            <Image src={searchIcon} />
+            <Image src={searchIcon} alt="Search Icon" />
           </div>
         </div>
 
@@ -80,8 +92,8 @@ function Navbar(props) {
           <ul className="hidden lg:flex gap-8 h-6 ">
             {links.map((item) => (
               <li>
-                <Link href={item.link || "#"}>
-                  <Image src={item.icon} className="h-full w-auto" />
+                <Link href={item.link as string || "#"}>
+                  <Image src={item.icon} alt={item.name} className="h-full w-auto" />
                 </Link>
               </li>
             ))}
@@ -93,11 +105,11 @@ function Navbar(props) {
               setMenuOpen(false);
             }}
           >
-            <Image src={searchIcon} />
+            <Image src={searchIcon} alt="Search Icon" />
           </button>
           {isLoggedIn ? (
             <Link href={avatar.link}>
-              <Image src={avatar.picture} className="h-14 w-14 rounded-full" />
+              <Image src={avatar.picture} alt="" className="h-14 w-14 rounded-full" />
             </Link>
           ) : (
             <Link href={loginButton.link}>

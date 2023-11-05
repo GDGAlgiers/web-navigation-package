@@ -4,15 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { GrMenu } from "react-icons/gr";
 import { FiX } from "react-icons/fi";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowUp,
+} from "react-icons/md";
 import { RiMenu2Fill } from "react-icons/ri";
 import { generaleStyle } from "@/types/generaleStyleType";
-import { simpleLink } from "@/types/linkType";
+import { ListLink } from "@/types/linkType";
 import { LogoInfo } from "@/types/logoType";
 import { userInfo } from "@/types/userInfoType";
 
 interface INavbarProps {
   Style: generaleStyle;
-  links: simpleLink[];
+  links: ListLink[];
   LogoInf: LogoInfo;
   menuType: string;
   loggedIn: boolean;
@@ -20,7 +24,7 @@ interface INavbarProps {
   SignInRoute: string;
   User: userInfo;
 }
-const Navbar = (props: INavbarProps) => {
+const NavbarThree = (props: INavbarProps) => {
   const {
     Style,
     links,
@@ -29,10 +33,10 @@ const Navbar = (props: INavbarProps) => {
     loggedIn,
     loginRoute,
     SignInRoute,
-    User
+    User,
   } = props;
   const { background, textColor, textSize, ButtonColor } = Style;
-
+  const [Arr, setArr] = useState(Array(links.length).fill(false));
   const [menu, setMenu] = useState(false);
   const Menu = () => {
     if (menuType == "Burger") {
@@ -71,10 +75,35 @@ const Navbar = (props: INavbarProps) => {
           >
             {links.map((link, index) => {
               return (
-                <Link key={index} href={`${link.link} `}>
-                  {" "}
-                  {link.name}{" "}
-                </Link>
+                <div
+                  key={index}
+                  className="flex relative cursor-pointer items-start gap-2"
+                  onClick={() => {
+                    setArr((prevArr) => {
+                      const newArr = [...prevArr];
+                      newArr[index] = !prevArr[index];
+                      return newArr;
+                    });
+                  }}
+                >
+                  {link.name}
+                  {!Arr[index] ? (
+                    <MdOutlineKeyboardArrowDown className="text-xl" />
+                  ) : (
+                    <MdOutlineKeyboardArrowUp className="text-xl" />
+                  )}
+                  {Arr[index] && (
+                    <div className="flex flex-col gap-2 text-sm p-2 border border-solid pl-3 w-24 bg-white absolute translate-y-[100%] -bottom-[100%] rounded-sm">
+                      {link.link.map((lien, index) => {
+                        return (
+                          <Link key={index} href={`${lien.link} `}>
+                            {lien.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -112,10 +141,36 @@ const Navbar = (props: INavbarProps) => {
           <div className="absolute bg-white translate-y-[100%] bottom-0 left-0 right-0 w-full p-3 flex flex-col gap-3 border-t border-t-[#A0A0A0] text-sm md:text-base ">
             {links.map((link, index) => {
               return (
-                <Link key={index} className="pl-3" href={`${link.link} `}>
-                  {" "}
-                  {link.name}{" "}
-                </Link>
+                <div key={index} className="w-full  pl-3">
+                  <div
+                    className="flex items-start gap-2 w-full justify-between"
+                    onClick={() => {
+                      setArr((prevArr) => {
+                        const newArr = [...prevArr];
+                        newArr[index] = !prevArr[index];
+                        return newArr;
+                      });
+                    }}
+                  >
+                    {link.name}
+                    {!Arr[index] ? (
+                      <MdOutlineKeyboardArrowDown className="text-xl " />
+                    ) : (
+                      <MdOutlineKeyboardArrowUp className="text-xl " />
+                    )}
+                  </div>
+                  {Arr[index] && (
+                    <div className=" flex flex-col gap-2 text-sm p-2 pl-3 w-full rounded-sm  ">
+                      {link.link.map((lien, index) => {
+                        return (
+                          <Link key={index} href={`${lien.link} `}>
+                            {lien.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
             {!loggedIn && (
@@ -162,4 +217,4 @@ const Navbar = (props: INavbarProps) => {
   );
 };
 
-export default Navbar;
+export default NavbarThree;

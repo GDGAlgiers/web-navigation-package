@@ -28,9 +28,9 @@ import Sidenavbar3 from "../components/template3/SideNabBar";
 import Navbar from "@/components/template1/Navbar";
 import logo from "public/Images/template1/Navbar/logo-botw.png";
 import profilpic from "public/Images/template1/Navbar/profilpic.svg";
+import NavbarThree from "@/components/navbar3/navbarThree";
 
 const Home = () => {
-
   const Userlinks = [
     {
       name: "Message",
@@ -61,16 +61,16 @@ const Home = () => {
     image: profilpic,
   };
 
-
   const generalStyles = {
-    textSize: "0.75rem",
+    textSize: "0.9rem",
     logoTextSize: "1.25rem",
-    textColor: "#969998",
+    textColor: "black",
     activeTextColor: "white",
-    background: "#171918",
+    background: "white",
     activeBg: "#27AE60",
+    ButtonColor: "#3A4F39",
   };
- 
+
   const LogoInf = {
     logoIcon: logo,
   };
@@ -78,32 +78,96 @@ const Home = () => {
   const links = [
     {
       name: "Home",
-      link: "/",
+      link: [
+        {
+          name: "Landing",
+          link: "/landing",
+        },
+        {
+          name: "About",
+          link: "/About",
+        },
+        {
+          name: "Contact",
+          link: "/",
+        },
+      ],
     },
     {
       name: "Landing",
-      link: "/landing",
+      link: [
+        {
+          name: "Home",
+          link: "/",
+        },
+        {
+          name: "Landing",
+          link: "/landing",
+        },
+        {
+          name: "About",
+          link: "/About",
+        },
+        {
+          name: "Contact",
+          link: "/",
+        },
+      ],
     },
     {
       name: "About",
-      link: "/About",
+      link: [
+        {
+          name: "Home",
+          link: "/",
+        },
+        {
+          name: "Landing",
+          link: "/landing",
+        },
+        {
+          name: "About",
+          link: "/About",
+        },
+        {
+          name: "Contact",
+          link: "/",
+        },
+      ],
     },
     {
       name: "Contact",
-      link: "/",
+      link: [
+        {
+          name: "Home",
+          link: "/",
+        },
+        {
+          name: "Landing",
+          link: "/landing",
+        },
+        {
+          name: "About",
+          link: "/About",
+        },
+        {
+          name: "Contact",
+          link: "/",
+        },
+      ],
     },
   ];
   return (
     <div className="w-full h-screen bg-black">
-      <Navbar
-      loggedIn
+      <NavbarThree
+        loggedIn={false}
         links={links}
         loginRoute="/login"
         Style={generalStyles}
         menuType="bottom-bar"
         SignInRoute="/Signin"
-       LogoInf={LogoInf}
-       User={user}
+        LogoInf={LogoInf}
+        User={user}
       />
     </div>
   );

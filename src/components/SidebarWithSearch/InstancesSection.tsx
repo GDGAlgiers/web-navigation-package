@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SearchField from "./SearchField.tsx";
+import SearchField from "./SearchField";
 import React, { useState } from "react";
 import { simpleLink } from "../../types/linkType";
 

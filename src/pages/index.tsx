@@ -69,7 +69,7 @@ const Home = () => {
       icon: <Image alt="Sales" src={money} />,
     },
   ];
-  const Userlinks = [
+  const NotifsLinks = [
     {
       name: "Message",
       link: "/Message",
@@ -199,7 +199,7 @@ const Home = () => {
       <Sidenavbar3
        LogoInf={LogoInf}
        Style={generalStyles}
-        Userlinks={Userlinks}
+       NotifsLinks={NotifsLinks}
         links={links}
         User={user}
       />

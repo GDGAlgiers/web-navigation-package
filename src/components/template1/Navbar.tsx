@@ -5,21 +5,26 @@ import { useState } from "react";
 import { GrMenu } from "react-icons/gr";
 import { FiX } from "react-icons/fi";
 import { RiMenu2Fill } from "react-icons/ri";
+import { generaleStyle } from "@/types/generaleStyleType";
+import { simpleLink } from "@/types/linkType";
+import { LogoInfo } from "@/types/logoType";
+import { userInfo } from "@/types/userype";
+import { buttonInfo } from "@/types/navbarButtonInfo";
 
-const Navbar = (props) => {
-  const {
-    links,
-    loggedIn,
-    loginRoute,
-    SignInRoute,
-    logo,
-    layout,
-    textColor,
-    textSize,
-    ButtonColor,
-    menuType,
-    logoProfil,
-  } = props;
+interface INavbarProps{
+  Style: generaleStyle;
+  links : simpleLink[];
+  LogoInf: LogoInfo;
+  menuType:string
+  loggedIn:boolean
+  button1:buttonInfo,
+  button2:buttonInfo
+  userInfo:userInfo
+}
+const Navbar = (props:INavbarProps) => {
+  const { Style , links , LogoInf,menuType,loggedIn,button1,button2 , userInfo } = props
+  const {background, textColor, textSize , ButtonColor } = Style;
+
   const [menu, setMenu] = useState(false);
   const Menu = () => {
     if (menuType == "Burger") {
@@ -43,19 +48,18 @@ const Navbar = (props) => {
     <>
       {/* Big Screens */}
       <div
-        className={` items-center justify-between px-3 w-full bg-[#fff] h-24 ${
-          layout == "Fixed" && "fixed"
-        } top-0 hidden lg:flex `}
+        style={{ background: `${background}` }}
+        className={` items-center justify-between px-3 w-full bg-[#fff] h-24 fixed top-0 hidden lg:flex `}
       >
         <div className="flex items-center gap-10">
-          <Image alt="logo" src={logo} className="max-h-16 w-auto" />
+          <Image alt="Logo" src={LogoInf.logoIcon} className="max-h-16 w-auto" />
           <div
             style={{ color: `${textColor}`, fontSize: `${textSize}` }}
             className={`flex items-center gap-16 `}
           >
             {links.map((link, index) => {
               return (
-                <Link key={index} href={`${link.route} `}>
+                <Link key={index} href={`${link.link} `}>
                   {" "}
                   {link.name}{" "}
                 </Link>
@@ -64,41 +68,27 @@ const Navbar = (props) => {
           </div>
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={logoProfil} />
+          <Image alt="profilpic" src={userInfo.image} />
         ) : (
           <div className="flex items-center gap-3 ">
-            <Link href={loginRoute}>
-              <button
-                style={{ borderColor: `${ButtonColor}` }}
-                className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
-              >
-                {" "}
-                Log In{" "}
-              </button>
+            <Link href={button1.link}>
+             {button1.button}
             </Link>
-            <Link href={SignInRoute}>
-              <button
-                style={{ background: `${ButtonColor}` }}
-                className="rounded-[4px] bg-[#3A4F39] text-white w-28 text-lg p-2 border "
-              >
-                {" "}
-                Sign In{" "}
-              </button>
+            <Link href={button2.link}>
+             {button2.button}
             </Link>
           </div>
         )}
       </div>
       {/* Small Screens */}
       <div
-        className={`flex relative items-center justify-between px-2 w-full bg-[#fff] h-16 ${
-          layout == "Fixed" && "fixed"
-        } top-0 lg:hidden `}
+        className={`flex relative items-center justify-between px-2 w-full bg-[#fff] h-16 top-0 lg:hidden `}
       >
         {menu && (
           <div className="absolute bg-white translate-y-[100%] bottom-0 left-0 right-0 w-full p-3 flex flex-col gap-3 border-t border-t-[#A0A0A0] text-sm md:text-base ">
             {links.map((link, index) => {
               return (
-                <Link key={index} className="pl-3" href={`${link.route} `}>
+                <Link key={index} className="pl-3" href={`${link.link} `}>
                   {" "}
                   {link.name}{" "}
                 </Link>
@@ -106,7 +96,7 @@ const Navbar = (props) => {
             })}
             {!loggedIn && (
               <Link
-                href={loginRoute}
+                href={button1.link}
                 className="border-t border-t-[#A0A0A0] py-5 pl-8 cursor-pointer "
               >
                 {" "}
@@ -124,32 +114,18 @@ const Navbar = (props) => {
           ) : (
             <Menu />
           )}
-          <Image alt="logo" src={logo} className="max-h-10 w-auto" />
+          <Image alt="Logo" src={LogoInf.logoIcon} className="max-h-10 w-auto" />
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={logoProfil} />
+          <Image alt="profilpic" src={userInfo.image} />
         ) : (
-          <Link href={SignInRoute}>
-            <button
-              style={{ background: `${ButtonColor}` }}
-              className="rounded-[4px] text-white text-xs w-20 md:text-sm md:w-24 p-2 border "
-            >
-              {" "}
-              Sign In{" "}
-            </button>
-          </Link>
+          <Link href={button2.link}>
+             {button2.button}
+            </Link>
         )}
       </div>
     </>
   );
 };
-
-// generaleStyles={{
-//   textColor: "....",
-//   textSize: "...",0
-//   borderColor: "....",
-// }}
-// mobileSettings={{
-//   menuType: "hamburger", // Options: "hamburger", "sidebar", "bottom-bar", etc,
 
 export default Navbar;

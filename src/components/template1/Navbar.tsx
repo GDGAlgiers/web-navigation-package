@@ -8,7 +8,8 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { generaleStyle } from "@/types/generaleStyleType";
 import { simpleLink } from "@/types/linkType";
 import { LogoInfo } from "@/types/logoType";
-import { userInfo } from "@/types/userInfoType";
+import { userInfo } from "@/types/userype";
+import { buttonInfo } from "@/types/navbarButtonInfo";
 
 interface INavbarProps{
   Style: generaleStyle;
@@ -16,12 +17,12 @@ interface INavbarProps{
   LogoInf: LogoInfo;
   menuType:string
   loggedIn:boolean
-  loginRoute:string
-  SignInRoute:string
-  User:userInfo
+  button1:buttonInfo,
+  button2:buttonInfo
+  userInfo:userInfo
 }
 const Navbar = (props:INavbarProps) => {
-  const { Style , links , LogoInf,menuType,loggedIn,loginRoute,SignInRoute , User } = props
+  const { Style , links , LogoInf,menuType,loggedIn,button1,button2 , userInfo } = props
   const {background, textColor, textSize , ButtonColor } = Style;
 
   const [menu, setMenu] = useState(false);
@@ -67,26 +68,14 @@ const Navbar = (props:INavbarProps) => {
           </div>
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={User.image} />
+          <Image alt="profilpic" src={userInfo.image} />
         ) : (
           <div className="flex items-center gap-3 ">
-            <Link href={loginRoute}>
-              <button
-                style={{ borderColor: `${ButtonColor}` }}
-                className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
-              >
-                {" "}
-                Log In{" "}
-              </button>
+            <Link href={button1.link}>
+             {button1.button}
             </Link>
-            <Link href={SignInRoute}>
-              <button
-                style={{ background: `${ButtonColor}` }}
-                className="rounded-[4px] bg-[#3A4F39] text-white w-28 text-lg p-2 border "
-              >
-                {" "}
-                Sign In{" "}
-              </button>
+            <Link href={button2.link}>
+             {button2.button}
             </Link>
           </div>
         )}
@@ -107,7 +96,7 @@ const Navbar = (props:INavbarProps) => {
             })}
             {!loggedIn && (
               <Link
-                href={loginRoute}
+                href={button1.link}
                 className="border-t border-t-[#A0A0A0] py-5 pl-8 cursor-pointer "
               >
                 {" "}
@@ -128,17 +117,11 @@ const Navbar = (props:INavbarProps) => {
           <Image alt="Logo" src={LogoInf.logoIcon} className="max-h-10 w-auto" />
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={User.image} />
+          <Image alt="profilpic" src={userInfo.image} />
         ) : (
-          <Link href={SignInRoute}>
-            <button
-              style={{ background: `${ButtonColor}` }}
-              className="rounded-[4px] text-white text-xs w-20 md:text-sm md:w-24 p-2 border "
-            >
-              {" "}
-              Sign In{" "}
-            </button>
-          </Link>
+          <Link href={button2.link}>
+             {button2.button}
+            </Link>
         )}
       </div>
     </>

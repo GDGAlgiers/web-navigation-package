@@ -28,6 +28,7 @@ import Sidenavbar3 from "../components/template3/SideNabBar";
 import Navbar from "@/components/template1/Navbar";
 import logo from "public/Images/template1/Navbar/logo-botw.png";
 import profilpic from "public/Images/template1/Navbar/profilpic.svg";
+import { buttonInfo } from "@/types/navbarButtonInfo";
 
 const Home = () => {
 
@@ -93,18 +94,37 @@ const Home = () => {
       link: "/",
     },
   ];
+  const loginButton:buttonInfo={
+    button:<button
+    style={{ borderColor: "white" }}
+    className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
+  >
+    {" "}
+    Log In{" "}
+  </button>,
+  link:"/login"
+  }
+
+  const signUpButton:buttonInfo={
+    button:<button
+    style={{ borderColor: `red` }}
+    className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
+  >
+    {" "}
+    sign Up{" "}
+  </button>,
+  link:"/signUp"
+  }
   return (
     <div className="w-full h-screen bg-black">
       <Navbar
-      loggedIn
         links={links}
-        loginRoute="/login"
         Style={generalStyles}
         menuType="bottom-bar"
-        SignInRoute="/Signin"
-       LogoInf={LogoInf}
-       User={user}
-      />
+        button2={signUpButton}
+        button1={loginButton}
+        LogoInf={LogoInf}
+        userInfo={user} loggedIn={false}      />
     </div>
   );
 };

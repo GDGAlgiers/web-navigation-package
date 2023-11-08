@@ -4,35 +4,39 @@ import Link from "next/link";
 import { useState } from "react";
 import { GrMenu } from "react-icons/gr";
 import { FiX } from "react-icons/fi";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowUp,
+} from "react-icons/md";
 import { RiMenu2Fill } from "react-icons/ri";
 import { generaleStyle } from "@/types/generaleStyleType";
-import { simpleLink } from "@/types/linkType";
+import { ListLink } from "@/types/linkType";
 import { LogoInfo } from "@/types/logoType";
-import { userInfo } from "@/types/userInfoType";
-
+import { userInfo } from "@/types/userType";
+import { buttonInfo } from "@/types/navbarButtonInfo";
 interface INavbarProps {
   Style: generaleStyle;
-  links: simpleLink[];
+  links: ListLink[];
   LogoInf: LogoInfo;
   menuType: string;
   loggedIn: boolean;
-  loginRoute: string;
-  SignInRoute: string;
-  User: userInfo;
+  button1:buttonInfo,
+  button2:buttonInfo,
+  userInfo: userInfo;
 }
-const Navbar = (props: INavbarProps) => {
+const NavbarThree = (props: INavbarProps) => {
   const {
     Style,
     links,
     LogoInf,
     menuType,
     loggedIn,
-    loginRoute,
-    SignInRoute,
-    User
+    button1,
+    button2,
+    userInfo,
   } = props;
   const { background, textColor, textSize, ButtonColor } = Style;
-
+  const [Arr, setArr] = useState(Array(links.length).fill(false));
   const [menu, setMenu] = useState(false);
   const Menu = () => {
     if (menuType == "Burger") {
@@ -71,35 +75,48 @@ const Navbar = (props: INavbarProps) => {
           >
             {links.map((link, index) => {
               return (
-                <Link key={index} href={`${link.link} `}>
-                  {" "}
-                  {link.name}{" "}
-                </Link>
+                <div
+                  key={index}
+                  className="flex relative cursor-pointer items-start gap-2"
+                  onClick={() => {
+                    setArr((prevArr) => {
+                      const newArr = [...prevArr];
+                      newArr[index] = !prevArr[index];
+                      return newArr;
+                    });
+                  }}
+                >
+                  {link.name}
+                  {!Arr[index] ? (
+                    <MdOutlineKeyboardArrowDown className="text-xl" />
+                  ) : (
+                    <MdOutlineKeyboardArrowUp className="text-xl" />
+                  )}
+                  {Arr[index] && (
+                    <div className="flex flex-col gap-2 text-sm p-2 border border-solid pl-3 w-24 bg-white absolute translate-y-[100%] -bottom-[100%] rounded-sm">
+                      {link.link.map((lien, index) => {
+                        return (
+                          <Link key={index} href={`${lien.link} `}>
+                            {lien.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={User.image} />
+          <Image alt="profilpic" src={userInfo.image} />
         ) : (
           <div className="flex items-center gap-3 ">
-            <Link href={loginRoute}>
-              <button
-                style={{ borderColor: `${ButtonColor}` }}
-                className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
-              >
-                {" "}
-                Log In{" "}
-              </button>
+            <Link href={button1.link}>
+              {button1.button}
             </Link>
-            <Link href={SignInRoute}>
-              <button
-                style={{ background: `${ButtonColor}` }}
-                className="rounded-[4px] bg-[#3A4F39] text-white w-28 text-lg p-2 border "
-              >
-                {" "}
-                Sign In{" "}
-              </button>
+            <Link href={button2.link}>
+            {button2.button}
             </Link>
           </div>
         )}
@@ -112,15 +129,41 @@ const Navbar = (props: INavbarProps) => {
           <div className="absolute bg-white translate-y-[100%] bottom-0 left-0 right-0 w-full p-3 flex flex-col gap-3 border-t border-t-[#A0A0A0] text-sm md:text-base ">
             {links.map((link, index) => {
               return (
-                <Link key={index} className="pl-3" href={`${link.link} `}>
-                  {" "}
-                  {link.name}{" "}
-                </Link>
+                <div key={index} className="w-full  pl-3">
+                  <div
+                    className="flex items-start gap-2 w-full justify-between"
+                    onClick={() => {
+                      setArr((prevArr) => {
+                        const newArr = [...prevArr];
+                        newArr[index] = !prevArr[index];
+                        return newArr;
+                      });
+                    }}
+                  >
+                    {link.name}
+                    {!Arr[index] ? (
+                      <MdOutlineKeyboardArrowDown className="text-xl " />
+                    ) : (
+                      <MdOutlineKeyboardArrowUp className="text-xl " />
+                    )}
+                  </div>
+                  {Arr[index] && (
+                    <div className=" flex flex-col gap-2 text-sm p-2 pl-3 w-full rounded-sm  ">
+                      {link.link.map((lien, index) => {
+                        return (
+                          <Link key={index} href={`${lien.link} `}>
+                            {lien.name}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
             {!loggedIn && (
               <Link
-                href={loginRoute}
+                href={button1.link}
                 className="border-t border-t-[#A0A0A0] py-5 pl-8 cursor-pointer "
               >
                 {" "}
@@ -145,9 +188,9 @@ const Navbar = (props: INavbarProps) => {
           />
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={User.image} />
+          <Image alt="profilpic" src={userInfo.image} />
         ) : (
-          <Link href={SignInRoute}>
+          <Link href={button2.link}>
             <button
               style={{ background: `${ButtonColor}` }}
               className="rounded-[4px] text-white text-xs w-20 md:text-sm md:w-24 p-2 border "
@@ -162,4 +205,4 @@ const Navbar = (props: INavbarProps) => {
   );
 };
 
-export default Navbar;
+export default NavbarThree;

@@ -69,7 +69,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
                     {Userlink.icon}
                     <h1 className=" "> {Userlink.name} </h1>
                   </div>
-                  {Userlink.notif!=0 && (
+                  {Userlink.notif != 0 && (
                     <div className="bg-[red] text-white w-4 h-4 flex items-center justify-center text-xs rounded-full">
                       {Userlink.notif}
                     </div>

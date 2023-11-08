@@ -157,17 +157,38 @@ const Home = () => {
       ],
     },
   ];
+  const loginButton:buttonInfo={
+    button:<button
+    style={{ borderColor: "white" }}
+    className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
+  >
+    {" "}
+    Log In{" "}
+  </button>,
+  link:"/login"
+  }
+
+  const signUpButton:buttonInfo={
+    button:<button
+    style={{ borderColor: `red` }}
+    className="rounded-[4px] text-[#3A4F39] w-28 text-lg p-2 border "
+  >
+    {" "}
+    sign Up{" "}
+  </button>,
+  link:"/signUp"
+  }
   return (
     <div className="w-full h-screen bg-black">
       <NavbarThree
         loggedIn={false}
         links={links}
-        loginRoute="/login"
         Style={generalStyles}
         menuType="bottom-bar"
-        SignInRoute="/Signin"
+        button2={signUpButton}
+        button1={loginButton}
         LogoInf={LogoInf}
-        User={user}
+        userInfo={user}
       />
     </div>
   );

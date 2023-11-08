@@ -10,11 +10,11 @@ interface ISidenavbar3Props {
   Style: generaleStyle;
   links: simpleLink[];
   LogoInf: LogoInfo;
-  Userlinks: NotifLink[];
+  NotifsLinks: NotifLink[];
   User: userInfo;
 }
 const Sidenavbar3 = (props: ISidenavbar3Props) => {
-  const { LogoInf, links, User, Style, Userlinks } = props;
+  const { LogoInf, links, User, Style, NotifsLinks } = props;
   const { activeTextColor, activeBg, background, textColor, textSize } = Style;
   const { logoIcon, title } = LogoInf;
   const router = useRouter();
@@ -61,7 +61,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
           className="flex w-full font-medium flex-col gap-3 mt-8 "
         >
-          {Userlinks.map((Userlink, index) => {
+          {NotifsLinks.map((Userlink, index) => {
             return (
               <Link key={index} href={Userlink.link}>
                 <div className="flex items-center justify-between">
@@ -108,7 +108,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
           className="flex w-full font-medium flex-col gap-3 mt-8 "
         >
-          {Userlinks.map((Userlink, index) => {
+          {NotifsLinks.map((Userlink, index) => {
             return (
               <Link key={index} href={Userlink.link}>
                 <div className="relative flex justify-center p-1 ">

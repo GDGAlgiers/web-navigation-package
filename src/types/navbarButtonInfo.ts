@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
 export interface buttonInfo{
-      button:ReactNode,
+    button:ReactNode,
     link:string
 }

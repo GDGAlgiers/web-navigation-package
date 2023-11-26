@@ -20,6 +20,56 @@ interface INavbarProps {
   SignInRoute: string;
   User: userInfo;
 }
+
+/**
+ * @component Navbar - A responsive React functional component for a navigation bar.
+ *
+ * @example
+ * // Example usage of Navbar
+ * import UserProfileImage from "my_image_source1"
+ * import {HomeIcon, AboutIcon} from "my_component_source2"
+ * import YourLogoComponent from "my_image_source3"
+ *
+ * //? stands for optional element
+ * const navbarProps = {
+ *   generaleStyles: {
+ *     textColor: '#333333',
+ *     ?activeBg: '#f0f0f0',
+ *     ?activeTextColor: '#007bff',
+ *     ?background: '#ffffff',
+ *     textSize: '16px',
+ *     ?HoverTextColor: '#555555',
+ *     ?HoverBgColor: '#f0f0f0',
+ *     ?BackgroundColor: '#ffffff',
+ *     ?ActiveTextColor: '#007bff',
+ *     ?BorderColor: '#dddddd',
+ *     ?ButtonColor: '#3498db',
+ *   },
+ *   links: [
+ *     { ?icon: <HomeIcon />, name: 'Home', link: '/home' },
+ *     { ?icon: <AboutIcon />, name: 'About', link: '/about' },
+ *     // Add more links as needed
+ *   ],
+ *   LogoInf: { ?title: 'Your Company', logoIcon: YourLogoComponent },
+ *   menuType: 'Burger',
+ *   loggedIn: false,
+ *   loginRoute: '/login',
+ *   SignInRoute: '/signin',
+ *   User: {
+ *     image: UserProfileImage,
+ *     ?name: 'John Doe',
+ *     ?additionalInfo?: "I am the Manager"
+ *     ?role: "Manager",
+ *   },
+ * };
+ *
+ * <Navbar {...navbarProps} />
+ *
+ * @param {INavbarProps} props The props for the component.
+ * @returns {JSX.Element} The rendered element.
+ * @author GDG Algiers
+ */
+
 const Navbar = (props: INavbarProps) => {
   const {
     Style,
@@ -72,7 +122,7 @@ const Navbar = (props: INavbarProps) => {
             {links.map((link, index) => {
               return (
                 <Link key={index} href={`${link.link} `}>
-                  {" "}
+                  {link.icon}{" "}
                   {link.name}{" "}
                 </Link>
               );
@@ -113,7 +163,7 @@ const Navbar = (props: INavbarProps) => {
             {links.map((link, index) => {
               return (
                 <Link key={index} className="pl-3" href={`${link.link} `}>
-                  {" "}
+                  {link.icon}{" "}
                   {link.name}{" "}
                 </Link>
               );

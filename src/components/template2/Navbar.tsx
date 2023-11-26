@@ -23,6 +23,61 @@ type Props = {
   mobileSettings: {menuType: "hamburger" | "kebab"}
 }
 
+/**
+ * @component Navbar - A responsive React functional component for a navigation bar.
+ *
+ * @example
+ * // Example usage of Navbar
+ * import LogoImage from "my_image_source1"
+ * import {HomeIcon, AboutIcon} from "my_image_source2"
+ * import UserProfileImage from "my_image_source3"
+ * 
+ * //? stands for optional element
+ * const navbarProps = {
+ *   avatar: { picture: UserProfileImage, link: '#' },
+ *   logo: LogoImage,
+ *   isLoggedIn: true,
+ *   loginButton: { text: 'Get started', link: '/login' },
+ *   links: [
+ *     { ?icon: HomeIcon, name: 'Home', link: '/home' },
+ *     { ?icon: AboutIcon, name: 'About', link: '/about' },
+ *   ],
+ *   generaleStyles: {
+ *     textColor: '#333333',
+ *     ?activeBg: '#f0f0f0',
+ *     ?activeTextColor: '#007bff',
+ *     ?background: '#ffffff',
+ *     textSize: '16px',
+ *     ?HoverTextColor: '#555555',
+ *     ?HoverBgColor: '#f0f0f0',
+ *     ?BackgroundColor: '#ffffff',
+ *     ?ActiveTextColor: '#007bff',
+ *     ?BorderColor: '#dddddd',
+ *     ?ButtonColor: '#3498db',
+ *   },
+ *   mobileSettings: { menuType: 'hamburger' },
+ * };
+ *
+ * <Navbar {...navbarProps} />
+ *
+ * @param {Props} props The props for the component.
+ * @param {Object} props.avatar The avatar configuration.
+ * @param {string} props.avatar.picture The source of the avatar picture.
+ * @param {string} props.avatar.link The link associated with the avatar.
+ * @param {*} props.logo The logo component.
+ * @param {boolean} props.isLoggedIn Indicates whether the user is logged in.
+ * @param {Object} props.loginButton The login button configuration.
+ * @param {string} props.loginButton.text The text displayed on the login button.
+ * @param {string} props.loginButton.link The link associated with the login button.
+ * @param {ListLink[]} props.links The list of navigation links.
+ * @param {generaleStyle} props.generaleStyles The styles for the navigation bar.
+ * @param {Object} props.mobileSettings The mobile settings configuration.
+ * @param {'hamburger' | 'kebab'} props.mobileSettings.menuType The type of mobile menu (hamburger or kebab).
+ * @returns {JSX.Element} The rendered element.
+ * 
+ * @author GDG Algiers
+ */
+
 function Navbar(props : Props) {
   const {
     avatar = { picture: avatarPicture, link: "#" }, //avatar: {picture,link}
@@ -92,7 +147,7 @@ function Navbar(props : Props) {
           <ul className="hidden lg:flex gap-8 h-6 ">
             {links.map((item) => (
               <li>
-                <Link href={item.link as string || "#"}>
+                <Link href={item.link as unknown as string || "#"}>
                   <Image src={item.icon} alt={item.name} className="h-full w-auto" />
                 </Link>
               </li>

@@ -15,6 +15,62 @@ type Props = {
   generaleStyles: generaleStyle
 }
 
+/**
+ * @component SideNavBar - A responsive React functional component for a side navigation bar.
+ *
+ * @example
+ * // Example usage of SideNavBar
+ * import {HomeIcon, AboutIcon, PageIcon, InfoIcon} from "my_image_source2"
+ * import UserProfileImage from "my_image_source3"
+ * 
+ * //? stands for optional element
+ * const sideNavBarProps = {
+ *   user: {
+ *     image: UserProfileImage,
+ *     ?name: 'John Doe',
+ *     ?role: 'Admin',
+ *     ?additionalInfo: "and I love GDG Algiers"
+ *   },
+ *   links: [
+ *     {
+ *       ?icon: HomeIcon,
+ *       name: 'Home',
+ *       link: [
+ *         { ?icon: PageIcon, name: 'Page 1', link: '/page1' },
+ *         { ?icon: PageIcon, name: 'Page 2', link: '/page2' },
+ *       ],
+ *     },
+ *     {
+ *       ?icon: AboutIcon,
+ *       name: 'About',
+ *       link: [{ ?icon: InfoIcon, name: 'About Us', link: '/about' }],
+ *     },
+ *   ],
+ *   generaleStyles: {
+ *     textColor: '#333333',
+ *     ?activeBg: '#f0f0f0',
+ *     ?activeTextColor: '#007bff',
+ *     ?background: '#ffffff',
+ *     textSize: '16px',
+ *     ?HoverTextColor: '#555555',
+ *     ?HoverBgColor: '#f0f0f0',
+ *     ?BackgroundColor: '#ffffff',
+ *     ?ActiveTextColor: '#007bff',
+ *     ?BorderColor: '#dddddd',
+ *     ?ButtonColor: '#3498db',
+ *   },
+ * };
+ *
+ * <SideNavBar {...sideNavBarProps} />
+ *
+ * @param {Props} props The props for the component.
+ * @param {userInfo} props.user The user information.
+ * @param {ListLink[]} props.links The list of navigation links.
+ * @param {generaleStyle} props.generaleStyles The styles for the side navigation bar.
+ * @returns {JSX.Element} The rendered element.
+ * @author GDG Algiers
+ */
+
 const SideNavBar = ({
   user,
   links,

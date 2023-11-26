@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import frame from "public/Images/template4/Frame.png"
+import React from "react";
 
 interface ISideNavbar4Props{
 logo:any,
@@ -15,12 +16,53 @@ Pages:  {
     route: string;
 }[];
 }[],
-textSize:any,
-Userlinks:any,
-ActivetextColor:any,
-ActiveBg:any,
-textColor:any
+textSize:string,
+Userlinks: {icon: any, name: string, route: string}[],
+ActivetextColor:string,
+ActiveBg:string,
+textColor:string
 }
+
+/**
+ * @component SideNavbar4 - A responsive React functional component for a side navigation bar.
+ *
+ * @example
+ * // Example usage of SideNavbar4
+ * import UserProfileIcon from "my_component_source1"
+ * import {HomeIcon, AboutIcon} from "my_component_source2"
+ * import YourLogoComponent from "my_image_source3"
+ * 
+ * //? stands for optional element
+ * const sideNavbarProps = {
+ *   logo: YourLogoComponent,
+ *   Name: 'Your Company',
+ *   links: [
+ *     { icon: <HomeIcon />, name: 'Home', route: '/home' },
+ *     { icon: <AboutIcon />, name: 'About', route: '/about' },
+ *     // Add more links as needed
+ *   ],
+ *   Pages: [
+ *     { name: 'Page 1', route: '/page1', ?Child: [{ name: 'Subpage 1', route: '/subpage1' }] },
+ *     { name: 'Page 2', route: '/page2' },
+ *     // Add more pages as needed
+ *   ],
+ *   textSize: '16px',
+ *   Userlinks: [
+ *     { icon: <UserProfileIcon />, name: 'Profile', route: '/profile' },
+ *     // Add more user links as needed
+ *   ],
+ *   ActivetextColor: '#007bff',
+ *   ActiveBg: '#f0f0f0',
+ *   textColor: '#333333',
+ * };
+ *
+ * <SideNavbar4 {...sideNavbarProps} />
+ *
+ * @param {ISideNavbar4Props} props The props for the component.
+ * @returns {JSX.Element} The rendered element.
+ * @author GDG Algiers
+ */
+
 const SideNavbar4 = (props:ISideNavbar4Props) => {
   const {
     logo,

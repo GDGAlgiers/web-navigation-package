@@ -1,6 +1,6 @@
 import Image from "next/image";
 import searchLoop from "../../../public/Images/SideBarWithSearch/search_logo.svg";
-import {useRef, useState} from "react";
+import {useRef} from "react";
 interface props{
   isExpanded:boolean ,searchBarCustomization:any, toggleSidebar:any,onSearch:any
 }
@@ -8,7 +8,7 @@ const SearchField = ({isExpanded , toggleSidebar,onSearch}:props) => {
   const inputRef = useRef(null);
   const handleImageClick = () => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      (inputRef.current as any).focus();
       toggleSidebar();
     }
   };
@@ -32,7 +32,7 @@ const SearchField = ({isExpanded , toggleSidebar,onSearch}:props) => {
           onClick={handleImageClick}
           className={`absolute top-3.5 left-3.5 ${isExpanded && "absolute top-3.5 left-10"}`}
         />
-       </div>
+      </div>
   )
 }
 

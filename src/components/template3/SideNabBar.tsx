@@ -13,6 +13,56 @@ interface ISidenavbar3Props {
   NotifsLinks: NotifLink[];
   User: userInfo;
 }
+
+/**
+ * @component Sidenavbar3 - A responsive React functional component for a side navigation bar.
+ *
+ * @example
+ * // Example usage of Sidenavbar3
+ * import UserProfileImage from "my_image_source1"
+ * import {HomeIcon, AboutIcon, NotificationIcon} from "my_component_source2"
+ * import YourLogoComponent from "my_image_source3"
+ * 
+ * //? stands for optional element
+ * const sidenavbarProps = {
+ *   generaleStyles: {
+ *     textColor: '#333333',
+ *     ?activeBg: '#f0f0f0',
+ *     ?activeTextColor: '#007bff',
+ *     ?background: '#ffffff',
+ *     textSize: '16px',
+ *     ?HoverTextColor: '#555555',
+ *     ?HoverBgColor: '#f0f0f0',
+ *     ?BackgroundColor: '#ffffff',
+ *     ?ActiveTextColor: '#007bff',
+ *     ?BorderColor: '#dddddd',
+ *     ?ButtonColor: '#3498db',
+ *   },
+ *   links: [
+ *     { icon: ?<HomeIcon />, name: 'Home', link: '/home' },
+ *     { icon: ?<AboutIcon />, name: 'About', link: '/about' },
+ *     // Add more links as needed
+ *   ],
+ *   LogoInf: { title: 'Your Company', logoIcon: YourLogoComponent },
+ *   NotifsLinks: [
+ *     { icon: <NotificationIcon />, name: 'Notifications', link: '/notifications', notif: 3 },
+ *     // Add more notification links as needed
+ *   ],
+ *   User: {
+ *     image: UserProfileImage,
+ *     ?name: 'John Doe',
+ *     ?additionalInfo: 'Some additional info',
+ *     ?role: 'Admin',
+ *   },
+ * };
+ *
+ * <Sidenavbar3 {...sidenavbarProps} />
+ *
+ * @param {ISidenavbar3Props} props The props for the component.
+ * @returns {JSX.Element} The rendered element.
+ * @author GDG Algiers
+ */
+
 const Sidenavbar3 = (props: ISidenavbar3Props) => {
   const { LogoInf, links, User, Style, NotifsLinks } = props;
   const { activeTextColor, activeBg, background, textColor, textSize } = Style;

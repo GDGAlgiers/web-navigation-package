@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { simpleLink } from "../../types/linkType";
 
 interface props {
-  searchBarCustomization: any;
+  searchBarCustomization?: any;
   instances: simpleLink[];
   isExpanded: boolean;
   toggleSidebar: any;

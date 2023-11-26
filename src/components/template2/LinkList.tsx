@@ -31,11 +31,11 @@ export default function LinkList({ links, Open, setOpen, generaleStyles } : Prop
       style={{ color: `${textColor}`, fontSize: `${textSize}` }}
     >
       {links.map((element, index) =>
-        !element.childItems ? (
+        !element.link ? (
           <li
             key={index}
             className={`items-center w-full drop-shadow-xl rounded-xl ${
-              element.link === router.pathname
+              element.currentLink === router.pathname
                 ? "border"
                 : "drop-shadow-xl rounded-xl hover:bg-zinc-300"
             }`}
@@ -44,11 +44,11 @@ export default function LinkList({ links, Open, setOpen, generaleStyles } : Prop
             }}
             style={{
               backgroundColor: `${
-                element.link == router.pathname && BackgroundColor
+                element.currentLink == router.pathname && BackgroundColor
               }`,
             }}
           >
-            <Link href={element.link as string}>
+            <Link href={element.currentLink as string}>
               <div className={`flex items-center gap-2 md:gap-4 p-3 ${(!Open) && 'justify-center'}`}>
                 <Image src={element.icon} alt={element.name} />
                 {/* logo */}

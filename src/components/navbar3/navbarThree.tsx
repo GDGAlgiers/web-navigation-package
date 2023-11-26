@@ -12,8 +12,16 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { generaleStyle } from "@/types/generaleStyleType";
 import { ListLink } from "@/types/linkType";
 import { LogoInfo } from "@/types/logoType";
-import { userInfo } from "@/types/userType";
+import { userInfo } from "@/types/userInfoType";
 import { buttonInfo } from "@/types/navbarButtonInfo";
+
+
+/**
+ * NavbarThreeProps - Props for the NavbarThree component.
+ *
+
+ */
+
 interface INavbarProps {
   Style: generaleStyle;
   links: ListLink[];
@@ -24,6 +32,66 @@ interface INavbarProps {
   button2:buttonInfo,
   userInfo: userInfo;
 }
+
+/**
+ * @component NavbarThree - A responsive React functional component for navigation served by GDG Algiers.
+ *
+ * @example
+ * // Example usage of NavbarThree
+ * import LogoImage from "my_image_source1"
+ * import {HomeIcon, AboutIcon, InfoIcon} from "my_image_source2"
+ * import {LoginButton, SignUpButton} from "my_image_source3"
+ * 
+ * //? stands for optional element
+ * const navbarProps = {
+ *   Style: {
+ *     textColor: '#333333',
+ *     ?activeBg: '#f0f0f0',
+ *     ?activeTextColor: '#007bff',
+ *     ?background: '#ffffff',
+ *     textSize: '16px',
+ *     ?HoverTextColor: '#555555',
+ *     ?HoverBgColor: '#f0f0f0',
+ *     ?BackgroundColor: '#ffffff',
+ *     ?ActiveTextColor: '#007bff',
+ *     ?BorderColor: '#dddddd',
+ *     ?ButtonColor: '#3498db',
+ *   },
+ *   links: [
+ *     {
+ *       ?icon: IconComponent,
+ *       name: 'Home',
+ *       link: [
+ *         { ?icon: HomeIcon, name: 'Page 1', link: '/page1' },
+ *         { ?icon: InfoIcon, name: 'Page 2', link: '/page2' },
+ *       ],
+ *     },
+ *     {
+ *       ?icon: AboutIcon,
+ *       name: 'About',
+ *       link: [{ ?icon: InfoIcon, name: 'About Us', link: '/about' }],
+ *     },
+ *   ],
+ *   LogoInf: { ?title: 'Company Logo', logoIcon: LogoIcon },
+ *   menuType: 'Burger',
+ *   loggedIn: true,
+ *   button1: { button: LoginButton, link: '/login' },
+ *   button2: { button: SignUpButton, link: '/signup' },
+ *   userInfo: {
+ *     image: UserProfileImage,
+ *     ?name: 'John Doe',
+ *     ?additionalInfo: 'Some additional info',
+ *     ?role: 'Admin',
+ *   },
+ * };
+ *
+ * <NavbarThree {...navbarProps} />
+ *
+ * @param {NavbarThreeProps} props The props for the component.
+ * @returns {JSX.Element} The rendered element.
+ * @author GDG Algiers
+ */
+
 const NavbarThree = (props: INavbarProps) => {
   const {
     Style,

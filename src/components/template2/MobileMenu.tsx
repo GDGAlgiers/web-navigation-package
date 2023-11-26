@@ -13,7 +13,7 @@ function MobileMenu({ links } : Props) {
       <ul className="flex flex-col p-4 gap-6">
         {links.map((item) => (
           <li>
-            <Link className="flex items-center gap-4" href={item.link as string || "#"}>
+            <Link className="flex items-center gap-4" href={item.link as unknown as string || "#"}>
               <Image src={item.icon} alt={item.name} className="h-full w-auto" />
               <span>{item.name}</span>
             </Link>

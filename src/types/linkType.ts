@@ -8,6 +8,7 @@ export interface ListLink {
   icon?: any;
   name: string;
   link: simpleLink[];
+  currentLink?: string
 }
 
 export interface NotifLink {

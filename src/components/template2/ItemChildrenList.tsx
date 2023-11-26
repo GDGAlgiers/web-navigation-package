@@ -31,10 +31,10 @@ const ItemChildrenList = ({
 
     return (
         <li className="items-center">
-            <Link href={element.link as string}>
+            <Link href={element.currentLink as unknown as string}>
                 <div
                     className={`flex items-center p-3 drop-shadow-xl rounded-xl hover:bg-zinc-300 hover:text-zinc-500 ${
-                    element.link === router.pathname && "border text-white"
+                    (element.currentLink as unknown as string) === router.pathname && "border text-white"
                     } ${!Open ? "p-0 justify-center" : "justify-between"}`}
                     onClick={() => {
                         setSelectedElement(element);
@@ -67,28 +67,28 @@ const ItemChildrenList = ({
                 isOpen ? "flex flex-col items-end justify-end" : "hidden"
             }`}
             >
-            {element.childItems?.map((child, index) => (
+            {element.link?.map((child, index) => (
                 <li
                 key={index}
                 className={`flex items-center w-11/12 p-4 drop-shadow-xl rounded-xl hover:bg-zinc-300 ${
                     !Open && "hidden"
                 }`}
                 onClick={() => {
-                    setSelectedChild(child);
+                    setSelectedChild(child as unknown as ListLink);
                 }}
                 >
-                    <Link href={element.link as string + child.link}>
+                    <Link href={element.currentLink as string + child.link}>
                         <div className="flex items-center gap-4">
                         <div
                             className={`w-2 h-2 rounded-full duration-300 `}
                             style={{
                             backgroundColor: `${
-                                element.link as string + child.link === router.pathname
+                                element.currentLink as string + child.link === router.pathname
                                 ? ActiveTextColor
                                 : textColor
                             }`,
                             opacity: `${
-                                element.link as string + child.link === router.pathname
+                                element.currentLink as string + child.link === router.pathname
                                 ? 1
                                 : 0.7
                             }`,
@@ -100,12 +100,12 @@ const ItemChildrenList = ({
                                 }`}
                                 style={{
                                 color: `${
-                                    element.link as string + child.link === router.pathname
+                                    element.currentLink as string + child.link === router.pathname
                                     ? ActiveTextColor
                                     : textColor
                                 }`,
                                 opacity: `${
-                                    element.link as string + child.link === router.pathname
+                                    element.currentLink as string + child.link === router.pathname
                                     ? 1
                                     : 0.7
                                 }`,

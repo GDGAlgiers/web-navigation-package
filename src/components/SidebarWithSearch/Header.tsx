@@ -1,5 +1,6 @@
 import Image from "next/image";
 import closeArrow from "../../../public/Images/SideBarWithSearch/close_arrow.svg";
+import { LogoInfo } from "@/types/logoType";
 
 interface headerProps{
   logo:LogoInfo,

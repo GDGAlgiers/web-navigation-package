@@ -13,7 +13,7 @@ const Footer = ({profileInformation , isExpanded,textColor}:props) => {
               {profileInformation.image}
               <div>
                   <h1 style={{color:textColor}}>{profileInformation.name}</h1>
-                 { profileInformation.additionalInfo && <p style={{color:textColor}} className=" text-xs font-light">{profileInformation.companyName}</p>}
+                 { profileInformation.additionalInfo && <p style={{color:textColor}} className=" text-xs font-light">{profileInformation.name}</p>}
               </div>
          <div onClick={logout}><Image src={logout} alt="logout" className="hover:cursor-pointer"/></div> 
       </div>

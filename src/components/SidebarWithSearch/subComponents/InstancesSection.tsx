@@ -1,7 +1,8 @@
 import Link from "next/link";
 import SearchField from "./SearchField";
 import React, { useState } from "react";
-import { simpleLink } from "../../types/linkType";
+import { simpleLink } from "../../../types/linkType";
+import Image from "next/image";
 
 interface props {
   searchBarCustomization?: any;
@@ -42,12 +43,11 @@ const InstancesSection = ({
         <>
           <Link
             href={instance.link}
-            className={`flex items-center hover:cursor-pointer bg-[#171918] w-full h-[6vh] relative ${
+            className={`flex items-center hover:cursor-pointer w-full h-[6vh] relative ${
               isExpanded ? "gap-4 px-12" : "justify-center"
             }`}
             onClick={() => handleClickEvent(index)}
             key={index}
-            style={{ backgroundColor: "#171918" }}
           >
             {index === selectedInstanceIndex && (
               <div
@@ -55,7 +55,7 @@ const InstancesSection = ({
                 className="absolute top-0 right-0 w-[5px] h-full rounded-l"
               />
             )}
-            {instance.icon}
+            <Image src={instance.icon} alt={instance.name} />
             {isExpanded && (
               <h1
                 style={{

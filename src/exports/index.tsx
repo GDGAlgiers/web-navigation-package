@@ -1,17 +1,17 @@
-import Navbar1 from "@/components/template1/Navbar";
-import Navbar from "@/components/template2/Navbar";
-import SideNavBar from "@/components/template2/SideNavBar";
-import Sidenavbar3 from "@/components/template3/SideNabBar";
-import NavbarThree from "@/components/navbar3/navbarThree";
-import SideNavbar4 from "@/components/template4/sidenavbar";
-import SideBarWithSearch from "@/components/SidebarWithSearch/SideBarWithSearch"
+import LinkExplorer from "@/components/LinkExplorer";
+import EdgeNavbar from "@/components/EdgeSide&Navbar/EdgeNavbar";
+import EdgeSidebar from "@/components/EdgeSide&Navbar/EdgeSidebar";
+import SidebarPanel from "@/components/SidebarPanel";
+import InteractiveNavbar from "@/components/InteractiveNavbar";
+import QuickSidebar from "@/components/QuickSidebar";
+import SideBarWithSearch from "@/components/SidebarWithSearch"
 
 export default {
-    Navbar1,
-    SideNavBar,
-    Navbar,
-    Sidenavbar3,
-    NavbarThree,
-    SideNavbar4,
+    LinkExplorer,
+    EdgeSidebar,
+    EdgeNavbar,
+    SidebarPanel,
+    InteractiveNavbar,
+    QuickSidebar,
     SideBarWithSearch
 }

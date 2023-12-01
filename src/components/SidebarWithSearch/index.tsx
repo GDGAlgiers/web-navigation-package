@@ -1,8 +1,8 @@
-import Footer from "./Footer";
-import Header from "./Header";
-import InstancesSection from "./InstancesSection";
-import SettingsSection from "./SettingsSection";
-import OptionsSection from "./OptionsSection";
+import Footer from "./subComponents/Footer";
+import Header from "./subComponents/Header";
+import InstancesSection from "./subComponents/InstancesSection";
+import SettingsSection from "./subComponents/SettingsSection";
+import OptionsSection from "./subComponents/OptionsSection";
 import React, { useState} from 'react';
 import { generaleStyle } from "../../types/generaleStyleType";
 import { userInfo } from "../../types/userInfoType";
@@ -26,31 +26,31 @@ export interface template1SidnavType{
  * @example
  * // Example usage of SideBarWithSearch
  * import UserProfileImage from "my_image_source1"
- * import { HomeIcon, SettingsIcon, OptionsIcon } from "my_component_source2"
+ * import { HomeIcon, SettingsIcon, OptionsIcon } from "my_image_source2"
  * import YourLogoComponent from "my_image_source3"
  * 
  * //? stands for optional element
  * const sidebarProps = {
  *   mainLinks: [
- *     { ?icon: <HomeIcon />, name: 'Home', link: '/home' },
+ *     { ?icon: HomeIcon, name: 'Home', link: '/home' },
  *     // Add more main links as needed
  *   ],
  *   settingsLinks: [
- *     { icon: ?<SettingsIcon />, name: 'Settings', link: '/settings' },
+ *     { ?icon: SettingsIcon, name: 'Settings', link: '/settings' },
  *     // Add more settings links as needed
  *   ],
  *   ?optionsLinks: [
- *     { icon: ?<OptionsIcon />, name: 'Options', link: '/options' },
+ *     { ?icon: OptionsIcon, name: 'Options', link: '/options' },
  *     // Add more options links as needed
  *   ],
  *   profileInformation: {
  *     image: UserProfileImage,
- *     ?name: 'John Doe',
- *     ?additionalInfo: 'Some additional info',
+ *     ?name: 'Rayan ALLALI',
+ *     ?additionalInfo: 'GDG Algiers Dev Core Team Member',
  *     ?role: 'Admin',
  *   },
  *   logo: { ?title: 'Your Company', logoIcon: YourLogoComponent },
- *   generaleStyles: {
+ *   generalStyles: {
  *     textColor: '#333333',
  *     ?activeBg: '#f0f0f0',
  *     ?activeTextColor: '#007bff',
@@ -125,19 +125,19 @@ const SideBarWithSearch = (
         setIsExpanded(false);
     };
     return (
-        <div className="scroll flex flex-col pt-8 pb-2 items-center h-screen max-h-screen overflow-y-scroll rounded-r-xl "
+        <div className="scroll flex flex-col pt-4 pb-3 items-center h-screen max-h-screen overflow-y-scroll rounded-r-xl "
             style={{
-                width: isExpanded ? "250px" : "60px",
-                backgroundColor:"#171918",
+                width: isExpanded ? "250px" : "80px",
+                backgroundColor: generalStyles.background || "#171918",
             }}
         >
-            <Header logo={logo} isExpanded={isExpanded} untoggleSidebar={untoggleSidebar} logoTextSize={""} />
-            <div style={{backgroundColor:"#FFFFFF26"}} className={`py-[0.6px] rounded-sm mx-2 my-4 ${isExpanded ? " w-2/3" : " w-1/3"}`} ></div>
+            <Header logo={logo} isExpanded={isExpanded} toggleSidebar={toggleSidebar} untoggleSidebar={untoggleSidebar} logoTextSize={""} />
+            <div style={{backgroundColor:"#FFFFFF26"}} className={`py-[0.6px] rounded-sm mx-2 my-4 ${isExpanded ? " w-2/3" : " w-1/3"}`}></div>
             <InstancesSection onSearch={onSearch} instances={instancesState} isExpanded={isExpanded} toggleSidebar={toggleSidebar} textSize={generalStyles.textSize} activeTextColor={generalStyles.activeTextColor} textColor={generalStyles.textColor} activeBg={generalStyles.activeBg}/>
-            <div style={{backgroundColor:"#FFFFFF26"}} className={`py-[0.6px] rounded-sm mx-2 my-4 ${isExpanded ? " w-2/3" : " w-1/3"}`} ></div>
+            <div style={{backgroundColor:"#FFFFFF26"}} className={`py-[0.6px] rounded-sm mx-2 my-4 ${isExpanded ? " w-2/3" : " w-1/3"}`}></div>
             <OptionsSection options={optionsState} isExpanded={isExpanded} textColor={generalStyles.textColor} textSize={generalStyles.textSize} />
             <SettingsSection settings={settingsState} isExpanded={isExpanded} textColor={generalStyles.textColor} textSize={generalStyles.textSize} />
-            <div style={{backgroundColor:"#FFFFFF26"}} className={`py-[0.6px] rounded-sm mx-2 my-4 ${isExpanded ? " w-2/3" : " w-1/3"}`} ></div>
+            <div style={{backgroundColor:"#FFFFFF26"}} className={`py-[0.6px] rounded-sm mx-2 my-4 ${isExpanded ? " w-2/3" : " w-1/3"}`}></div>
             <Footer logout={logout} profileInformation={profileInformation} isExpanded={isExpanded} textColor={generalStyles.textSize}/>
         </div>
     );

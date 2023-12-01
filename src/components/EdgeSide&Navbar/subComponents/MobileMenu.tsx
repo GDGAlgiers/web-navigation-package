@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { ListLink } from "../../types/linkType";
+import { simpleLink } from "./../../../types/linkType";
 
 type Props = {
-  links: ListLink[]
+  links: simpleLink[]
 }
 
 function MobileMenu({ links } : Props) {

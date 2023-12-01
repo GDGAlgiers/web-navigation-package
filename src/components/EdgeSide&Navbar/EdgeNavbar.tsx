@@ -8,39 +8,38 @@ import { GiHamburgerMenu as HamMenu } from "react-icons/gi";
 import { BsThreeDotsVertical as KebabMenu } from "react-icons/bs";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
 import Link from "next/link";
-import MobileSearch from "./MobileSearch";
-import MobileMenu from "./MobileMenu";
+import MobileSearch from "./subComponents/MobileSearch";
+import MobileMenu from "./subComponents/MobileMenu";
 import { generaleStyle } from "../../types/generaleStyleType";
-import { ListLink } from "../../types/linkType";
+import { simpleLink } from "../../types/linkType";
 
 type Props = {
   avatar: { picture: string, link: string },
   logo: any,
   isLoggedIn: boolean,
   loginButton: { text: string, link: string },
-  links: ListLink[],
+  links: simpleLink[],
   generaleStyles: generaleStyle,
   mobileSettings: {menuType: "hamburger" | "kebab"}
 }
 
 /**
- * @component Navbar - A responsive React functional component for a navigation bar.
+ * @component EdgeNavbar - A responsive React functional component for a navigation bar.
  *
  * @example
- * // Example usage of Navbar
+ * // Example usage of EdgeNavbar
  * import LogoImage from "my_image_source1"
- * import {HomeIcon, AboutIcon} from "my_image_source2"
- * import UserProfileImage from "my_image_source3"
+ * import UserProfileImage from "my_image_source2"
  * 
  * //? stands for optional element
- * const navbarProps = {
- *   avatar: { picture: UserProfileImage, link: '#' },
+ * const EdgenavbarProps = {
+ *   avatar: { picture: UserProfileImage, link: 'profile' },
  *   logo: LogoImage,
  *   isLoggedIn: true,
  *   loginButton: { text: 'Get started', link: '/login' },
  *   links: [
- *     { ?icon: HomeIcon, name: 'Home', link: '/home' },
- *     { ?icon: AboutIcon, name: 'About', link: '/about' },
+ *     { name: 'Home', link: '/home' },
+ *     { name: 'About', link: '/about' },
  *   ],
  *   generaleStyles: {
  *     textColor: '#333333',
@@ -58,7 +57,7 @@ type Props = {
  *   mobileSettings: { menuType: 'hamburger' },
  * };
  *
- * <Navbar {...navbarProps} />
+ * <EdgeNavbar {...EdgenavbarProps} />
  *
  * @param {Props} props The props for the component.
  * @param {Object} props.avatar The avatar configuration.
@@ -78,7 +77,7 @@ type Props = {
  * @author GDG Algiers
  */
 
-function Navbar(props : Props) {
+function EdgeNavbar(props : Props) {
   const {
     avatar = { picture: avatarPicture, link: "#" }, //avatar: {picture,link}
     logo = defaultLogo,
@@ -183,4 +182,4 @@ function Navbar(props : Props) {
   );
 }
 
-export default Navbar;
+export default EdgeNavbar;

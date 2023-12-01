@@ -3,7 +3,7 @@ import Link from "next/link";
 import Arrow from "public/Images/template2/Down.svg";
 import Support from "public/Images/template2/Support.png";
 import Collapse from "public/Images/template2/Subtract.svg";
-import LinkList from "./LinkList";
+import LinkList from "./subComponents/LinkList";
 import { useState } from "react";
 import { userInfo } from "../../types/userInfoType";
 import { ListLink } from "../../types/linkType";
@@ -16,20 +16,20 @@ type Props = {
 }
 
 /**
- * @component SideNavBar - A responsive React functional component for a side navigation bar.
+ * @component EdgeSidebar - A responsive React functional component for a side navigation bar.
  *
  * @example
- * // Example usage of SideNavBar
- * import {HomeIcon, AboutIcon, PageIcon, InfoIcon} from "my_image_source2"
- * import UserProfileImage from "my_image_source3"
+ * // Example usage of EdgeSidebar
+ * import {HomeIcon, AboutIcon, PageIcon, InfoIcon} from "my_image_source1"
+ * import UserProfileImage from "my_image_source2"
  * 
  * //? stands for optional element
- * const sideNavBarProps = {
+ * const EdgeSidebarProps = {
  *   user: {
  *     image: UserProfileImage,
- *     ?name: 'John Doe',
+ *     ?name: 'Rayan ALLALI',
  *     ?role: 'Admin',
- *     ?additionalInfo: "and I love GDG Algiers"
+ *     ?additionalInfo: "GDG Algiers Open Source Team Lead"
  *   },
  *   links: [
  *     {
@@ -39,11 +39,13 @@ type Props = {
  *         { ?icon: PageIcon, name: 'Page 1', link: '/page1' },
  *         { ?icon: PageIcon, name: 'Page 2', link: '/page2' },
  *       ],
+ *       currentLink: "/"
  *     },
  *     {
  *       ?icon: AboutIcon,
  *       name: 'About',
  *       link: [{ ?icon: InfoIcon, name: 'About Us', link: '/about' }],
+ *       currentLink: "/about"
  *     },
  *   ],
  *   generaleStyles: {
@@ -61,7 +63,7 @@ type Props = {
  *   },
  * };
  *
- * <SideNavBar {...sideNavBarProps} />
+ * <EdgeSidebar {...EdgeSidebarProps} />
  *
  * @param {Props} props The props for the component.
  * @param {userInfo} props.user The user information.
@@ -71,7 +73,7 @@ type Props = {
  * @author GDG Algiers
  */
 
-const SideNavBar = ({
+const EdgeSidebar = ({
   user,
   links,
   generaleStyles
@@ -165,4 +167,4 @@ const SideNavBar = ({
   );
 };
 
-export default SideNavBar;
+export default EdgeSidebar;

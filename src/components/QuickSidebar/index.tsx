@@ -1,20 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import frame from "public/Images/template4/Frame.png"
 import React from "react";
 
-interface ISideNavbar4Props{
+interface IQuickSidebarProps{
 logo:any,
 Name:string,
 links:any,
 Pages:  {
   name: string;
   route: string;
-  Child? : {
-    name: string;
-    route: string;
-}[];
 }[],
 textSize:string,
 Userlinks: {icon: any, name: string, route: string}[],
@@ -24,31 +19,28 @@ textColor:string
 }
 
 /**
- * @component SideNavbar4 - A responsive React functional component for a side navigation bar.
+ * @component QuickSidebar - A responsive React functional component for a side navigation bar.
  *
  * @example
- * // Example usage of SideNavbar4
- * import UserProfileIcon from "my_component_source1"
- * import {HomeIcon, AboutIcon} from "my_component_source2"
- * import YourLogoComponent from "my_image_source3"
+ * // Example usage of QuickSidebar
+ * import {YourLogoComponent, msg1, msg2, msg3} from "my_image_source"
  * 
- * //? stands for optional element
- * const sideNavbarProps = {
+ * const QuickSideBarProps = {
  *   logo: YourLogoComponent,
- *   Name: 'Your Company',
+ *   Name: 'GDG Algiers',
  *   links: [
- *     { icon: <HomeIcon />, name: 'Home', route: '/home' },
- *     { icon: <AboutIcon />, name: 'About', route: '/about' },
+ *     { icon: msg1, name: 'Home', route: '/home' },
+ *     { icon: msg2, name: 'About', route: '/about' },
  *     // Add more links as needed
  *   ],
  *   Pages: [
- *     { name: 'Page 1', route: '/page1', ?Child: [{ name: 'Subpage 1', route: '/subpage1' }] },
+ *     { name: 'Page 1', route: '/page1' },
  *     { name: 'Page 2', route: '/page2' },
  *     // Add more pages as needed
  *   ],
  *   textSize: '16px',
  *   Userlinks: [
- *     { icon: <UserProfileIcon />, name: 'Profile', route: '/profile' },
+ *     { icon: msg3, name: 'Profile', route: '/profile' },
  *     // Add more user links as needed
  *   ],
  *   ActivetextColor: '#007bff',
@@ -56,14 +48,14 @@ textColor:string
  *   textColor: '#333333',
  * };
  *
- * <SideNavbar4 {...sideNavbarProps} />
+ * <QuickSidebar {...QuickSideBarProps} />
  *
- * @param {ISideNavbar4Props} props The props for the component.
+ * @param {IQuickSidebarProps} props The props for the component.
  * @returns {JSX.Element} The rendered element.
  * @author GDG Algiers
  */
 
-const SideNavbar4 = (props:ISideNavbar4Props) => {
+const QuickSidebar = (props:IQuickSidebarProps) => {
   const {
     logo,
     Name,
@@ -98,7 +90,7 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
                   }}
                   className={`p-2 flex items-center gap-3`}
                 >
-                  {link.icon}
+                  <Image src={link.icon} alt={link.name} />
                   <h1
                     style={{
                       color: `${link.route == currentRoute && ActivetextColor}`,
@@ -122,7 +114,7 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
               return (
                 <Link key={index} href={Userlink.route}>
                   <div className="p-2 flex items-center gap-2">
-                    {Userlink.icon}
+                    <Image src={Userlink.icon} alt={Userlink.name} />
                     <h1 className=" "> {Userlink.name} </h1>
                   </div>
                 </Link>
@@ -140,8 +132,8 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
                 <>
                 <Link key={index} href={Page.route}>
                   <div className="p-2 flex items-center gap-2">
-                    {Page.Child ?  <Image alt="frame" src={frame} /> : <div className="w-1 h-1 bg-black rounded-full "></div>  }
-                    <h1 className=" "> {Page.name} </h1>
+                    <div className="w-1 h-1 bg-black rounded-full "></div>
+                    <h1 className=" "> {Page.name}</h1>
                   </div>
                 </Link>
                 </>
@@ -161,7 +153,7 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
           {links.map((link:any, index:number) => {
             return (
               <Link key={index} href={link.route}>
-                <div className={`flex justify-center p-1 `}>{link.icon}</div>
+                <div className={`flex justify-center p-1 `}><Image src={link.icon} alt={link.name} /></div>
               </Link>
             );
           })}
@@ -174,7 +166,7 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
             return (
               <Link key={index} href={Userlink.route}>
                 <div className="flex justify-center p-1 ">
-                  {Userlink.icon}
+                  <Image src={Userlink.icon} alt={Userlink.name} />
                 </div>
               </Link>
             );
@@ -189,7 +181,7 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
             return (
               <Link key={index} href={Userlink.route}>
                 <div className=" flex justify-center p-1 ">
-                  {Userlink.icon}
+                  <Image src={Userlink.icon} alt={Userlink.name} />
                 </div>
               </Link>
             );
@@ -200,4 +192,4 @@ const SideNavbar4 = (props:ISideNavbar4Props) => {
   );
 };
 
-export default SideNavbar4;
+export default QuickSidebar;

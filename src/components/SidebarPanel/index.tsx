@@ -6,7 +6,7 @@ import { NotifLink, simpleLink } from "../../types/linkType";
 import { LogoInfo } from "../../types/logoType";
 import { userInfo } from "../../types/userInfoType";
 
-interface ISidenavbar3Props {
+interface ISidePanel {
   Style: generaleStyle;
   links: simpleLink[];
   LogoInf: LogoInfo;
@@ -15,17 +15,17 @@ interface ISidenavbar3Props {
 }
 
 /**
- * @component Sidenavbar3 - A responsive React functional component for a side navigation bar.
+ * @component SidebarPanel - A responsive React functional component for a side navigation bar.
  *
  * @example
- * // Example usage of Sidenavbar3
+ * // Example usage of SidebarPanel
  * import UserProfileImage from "my_image_source1"
- * import {HomeIcon, AboutIcon, NotificationIcon} from "my_component_source2"
+ * import {HomeIcon, AboutIcon, NotificationIcon} from "my_icons_source2"
  * import YourLogoComponent from "my_image_source3"
  * 
  * //? stands for optional element
  * const sidenavbarProps = {
- *   generaleStyles: {
+ *   Style: {
  *     textColor: '#333333',
  *     ?activeBg: '#f0f0f0',
  *     ?activeTextColor: '#007bff',
@@ -39,31 +39,31 @@ interface ISidenavbar3Props {
  *     ?ButtonColor: '#3498db',
  *   },
  *   links: [
- *     { icon: ?<HomeIcon />, name: 'Home', link: '/home' },
- *     { icon: ?<AboutIcon />, name: 'About', link: '/about' },
+ *     { ?icon: HomeIcon, name: 'Home', link: '/home' },
+ *     { ?icon: AboutIcon, name: 'About', link: '/about' },
  *     // Add more links as needed
  *   ],
- *   LogoInf: { title: 'Your Company', logoIcon: YourLogoComponent },
+ *   LogoInf: { title: 'GDG Algiers', logoIcon: YourLogoComponent },
  *   NotifsLinks: [
- *     { icon: <NotificationIcon />, name: 'Notifications', link: '/notifications', notif: 3 },
+ *     { icon: NotificationIcon, name: 'Notifications', link: '/notifications', notif: 3 },
  *     // Add more notification links as needed
  *   ],
  *   User: {
  *     image: UserProfileImage,
- *     ?name: 'John Doe',
- *     ?additionalInfo: 'Some additional info',
+ *     ?name: 'Okba ALLAOUA',
+ *     ?additionalInfo: 'GDG Algiers Open Source Team Lead',
  *     ?role: 'Admin',
  *   },
  * };
  *
- * <Sidenavbar3 {...sidenavbarProps} />
+ * <SidebarPanel {...sidenavbarProps} />
  *
- * @param {ISidenavbar3Props} props The props for the component.
+ * @param {ISidePanel} props The props for the component.
  * @returns {JSX.Element} The rendered element.
  * @author GDG Algiers
  */
 
-const Sidenavbar3 = (props: ISidenavbar3Props) => {
+const SidebarPanel = (props: ISidePanel) => {
   const { LogoInf, links, User, Style, NotifsLinks } = props;
   const { activeTextColor, activeBg, background, textColor, textSize } = Style;
   const { logoIcon, title } = LogoInf;
@@ -93,7 +93,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
                   }}
                   className={`p-2 flex items-center gap-4`}
                 >
-                  {link.icon}
+                  <Image src={link.icon} alt={link.name} />
                   <h1
                     style={{
                       color: `${link.link == currentRoute && activeTextColor}`,
@@ -116,7 +116,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
               <Link key={index} href={Userlink.link}>
                 <div className="flex items-center justify-between">
                   <div className="p-2 flex items-center gap-4">
-                    {Userlink.icon}
+                    <Image src={Userlink.icon} alt={Userlink.name} />
                     <h1 className=" "> {Userlink.name} </h1>
                   </div>
                   {Userlink.notif != 0 && (
@@ -131,14 +131,14 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
           <div className="flex items-center gap-2 p-3">
             <Image alt="profil pic" src={User.image} />
             <div className=" text-xs ">
-              <h1 className="text-[#324054]">{User.name}</h1>
+              <h1 className="text-[#324054] text-md">{User.name}</h1>
               <p className="text-[#71839B] ">{User.additionalInfo}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="w-32 fixed top-0 scroll flex-col gap-5 items-center bg-white h-screen max-h-screen p-5 px-2 flex lg:hidden ">
+      <div className="w-32 fixed top-0 scroll flex-col gap-5 items-center bg-white h-screen max-h-screen p-5 px-2 flex lg:hidden border-2 border-y-0">
         <div className="flex justify-start items-center">
           <Image alt="logoIcon" src={logoIcon} />
         </div>
@@ -149,7 +149,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
           {links.map((link, index) => {
             return (
               <Link key={index} href={link.link}>
-                <div className={`flex justify-center p-1 `}>{link.icon}</div>
+                <div className={`flex justify-center p-1 `}><Image src={link.icon} alt={link.name} /> </div>
               </Link>
             );
           })}
@@ -162,7 +162,7 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
             return (
               <Link key={index} href={Userlink.link}>
                 <div className="relative flex justify-center p-1 ">
-                  {Userlink.icon}
+                  <Image src={Userlink.icon} alt={Userlink.name} />
                   {Userlink.notif && (
                     <div className="bg-[red] absolute text-white w-1 h-1 top-0 right-[30%] rounded-full" />
                   )}
@@ -179,4 +179,4 @@ const Sidenavbar3 = (props: ISidenavbar3Props) => {
   );
 };
 
-export default Sidenavbar3;
+export default SidebarPanel;

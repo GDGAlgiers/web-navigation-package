@@ -3,7 +3,7 @@ import Arrow from "public/Images/template2/Down.svg";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
-import { ListLink } from "../../types/linkType";
+import { ListLink } from "../../../types/linkType";
 
 type Props = {
     element: ListLink,

@@ -4,8 +4,8 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 import { useRouter } from "next/router";
 import ItemChildrenList from "./ItemChildrenList";
-import { ListLink } from "../../types/linkType";
-import { generaleStyle } from "../../types/generaleStyleType";
+import { ListLink } from "../../../types/linkType";
+import { generaleStyle } from "../../../types/generaleStyleType";
 
 type Props = {
   links: ListLink[],
@@ -31,7 +31,7 @@ export default function LinkList({ links, Open, setOpen, generaleStyles } : Prop
       style={{ color: `${textColor}`, fontSize: `${textSize}` }}
     >
       {links.map((element, index) =>
-        !element.link ? (
+        !(element.link.length>0) ? (
           <li
             key={index}
             className={`items-center w-full drop-shadow-xl rounded-xl ${

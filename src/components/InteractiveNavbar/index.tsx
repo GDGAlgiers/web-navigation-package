@@ -11,21 +11,14 @@ import {
 import { RiMenu2Fill } from "react-icons/ri";
 import { generaleStyle } from "@/types/generaleStyleType";
 import { ListLink } from "@/types/linkType";
-import { LogoInfo } from "@/types/logoType";
 import { userInfo } from "@/types/userInfoType";
 import { buttonInfo } from "@/types/navbarButtonInfo";
+import { useRouter } from "next/router";
 
-
-/**
- * NavbarThreeProps - Props for the NavbarThree component.
- *
-
- */
-
-interface INavbarProps {
+interface IInteractiveNavbarProps {
   Style: generaleStyle;
   links: ListLink[];
-  LogoInf: LogoInfo;
+  LogoInf: any;
   menuType: string;
   loggedIn: boolean;
   button1:buttonInfo,
@@ -34,16 +27,15 @@ interface INavbarProps {
 }
 
 /**
- * @component NavbarThree - A responsive React functional component for navigation served by GDG Algiers.
+ * @component InteractiveNavbar - A responsive React functional component for navigation served by GDG Algiers.
  *
  * @example
- * // Example usage of NavbarThree
+ * // Example usage of InteractiveNavbar
  * import LogoImage from "my_image_source1"
- * import {HomeIcon, AboutIcon, InfoIcon} from "my_image_source2"
- * import {LoginButton, SignUpButton} from "my_image_source3"
+ * import {UserProfileImage} from "my_image_source2"
  * 
  * //? stands for optional element
- * const navbarProps = {
+ * const InteractiveNavbarProps = {
  *   Style: {
  *     textColor: '#333333',
  *     ?activeBg: '#f0f0f0',
@@ -57,42 +49,41 @@ interface INavbarProps {
  *     ?BorderColor: '#dddddd',
  *     ?ButtonColor: '#3498db',
  *   },
- *   links: [
+ *   links: [ //accept one level of hiarchy
  *     {
- *       ?icon: IconComponent,
+ *       name: 'About',
+ *       link: [], //automatically take the name as route
+ *     },
+ *     {
  *       name: 'Home',
  *       link: [
- *         { ?icon: HomeIcon, name: 'Page 1', link: '/page1' },
- *         { ?icon: InfoIcon, name: 'Page 2', link: '/page2' },
+ *         { name: 'Page 1', link: '/page1' },
+ *         { name: 'Page 2', link: '/page2' },
+ *         { name: 'Page 3', link: '/page2' },
  *       ],
  *     },
- *     {
- *       ?icon: AboutIcon,
- *       name: 'About',
- *       link: [{ ?icon: InfoIcon, name: 'About Us', link: '/about' }],
- *     },
  *   ],
- *   LogoInf: { ?title: 'Company Logo', logoIcon: LogoIcon },
+ *   LogoInf: LogoImage,
  *   menuType: 'Burger',
  *   loggedIn: true,
- *   button1: { button: LoginButton, link: '/login' },
- *   button2: { button: SignUpButton, link: '/signup' },
+ *   button1: { button: <button>LogIn</button>, link: "/login" },
+ *   button2: { button: <button>SignUo</button>, link: "/signup" },
  *   userInfo: {
  *     image: UserProfileImage,
- *     ?name: 'John Doe',
- *     ?additionalInfo: 'Some additional info',
+ *     ?name: 'Okba ALLAOUA',
+ *     ?additionalInfo: 'GDG Algiers Dev Core Team Member',
  *     ?role: 'Admin',
  *   },
  * };
  *
- * <NavbarThree {...navbarProps} />
+ * <InteractiveNavbar {...InteractiveNavbarProps} />
  *
- * @param {NavbarThreeProps} props The props for the component.
+ * @param {InteractiveNavbarProps} props The props for the component.
  * @returns {JSX.Element} The rendered element.
  * @author GDG Algiers
  */
 
-const NavbarThree = (props: INavbarProps) => {
+const InteractiveNavbar = (props: IInteractiveNavbarProps) => {
   const {
     Style,
     links,
@@ -103,6 +94,7 @@ const NavbarThree = (props: INavbarProps) => {
     button2,
     userInfo,
   } = props;
+  const router = useRouter();
   const { background, textColor, textSize, ButtonColor } = Style;
   const [Arr, setArr] = useState(Array(links.length).fill(false));
   const [menu, setMenu] = useState(false);
@@ -132,9 +124,11 @@ const NavbarThree = (props: INavbarProps) => {
         className={` items-center justify-between px-3 w-full bg-[#fff] h-24 fixed top-0 hidden lg:flex `}
       >
         <div className="flex items-center gap-10">
+          <Link href={router.pathname}>
+          </Link>
           <Image
             alt="Logo"
-            src={LogoInf.logoIcon}
+            src={LogoInf}
             className="max-h-16 w-auto"
           />
           <div
@@ -143,6 +137,8 @@ const NavbarThree = (props: INavbarProps) => {
           >
             {links.map((link, index) => {
               return (
+                !!link.link.length
+                ?
                 <div
                   key={index}
                   className="flex relative cursor-pointer items-start gap-2"
@@ -155,16 +151,20 @@ const NavbarThree = (props: INavbarProps) => {
                   }}
                 >
                   {link.name}
+                  {
+                    !!link.link.length && <>
                   {!Arr[index] ? (
                     <MdOutlineKeyboardArrowDown className="text-xl" />
                   ) : (
                     <MdOutlineKeyboardArrowUp className="text-xl" />
                   )}
-                  {Arr[index] && (
+                    </>
+                  }
+                  {Arr[index] && !!link.link.length && (
                     <div className="flex flex-col gap-2 text-sm p-2 border border-solid pl-3 w-24 bg-white absolute translate-y-[100%] -bottom-[100%] rounded-sm">
-                      {link.link.map((lien, index) => {
+                      {link.link.length>0 && link.link.map((lien, index) => {
                         return (
-                          <Link key={index} href={`${lien.link} `}>
+                          <Link key={index} href={`${lien.link}`} className="flex relative cursor-pointer items-start gap-2">
                             {lien.name}
                           </Link>
                         );
@@ -172,6 +172,8 @@ const NavbarThree = (props: INavbarProps) => {
                     </div>
                   )}
                 </div>
+                :
+                <Link href={(link.name.trim().toLowerCase() == 'home') ? '/' : "/"+link.name.trim().toLowerCase()}>{link.name}</Link>
               );
             })}
           </div>
@@ -251,7 +253,7 @@ const NavbarThree = (props: INavbarProps) => {
           )}
           <Image
             alt="Logo"
-            src={LogoInf.logoIcon}
+            src={LogoInf}
             className="max-h-10 w-auto"
           />
         </div>
@@ -273,4 +275,4 @@ const NavbarThree = (props: INavbarProps) => {
   );
 };
 
-export default NavbarThree;
+export default InteractiveNavbar;

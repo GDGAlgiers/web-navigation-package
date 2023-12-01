@@ -10,7 +10,7 @@ import { simpleLink } from "@/types/linkType";
 import { LogoInfo } from "@/types/logoType";
 import { userInfo } from "@/types/userInfoType";
 
-interface INavbarProps {
+interface ILinkExplorerProps {
   Style: generaleStyle;
   links: simpleLink[];
   LogoInf: LogoInfo;
@@ -22,17 +22,17 @@ interface INavbarProps {
 }
 
 /**
- * @component Navbar - A responsive React functional component for a navigation bar.
+ * @component LinkExplorer - A responsive React functional component for a navigation bar.
  *
  * @example
- * // Example usage of Navbar
+ * // Example usage of LinkExplorer
  * import UserProfileImage from "my_image_source1"
- * import {HomeIcon, AboutIcon} from "my_component_source2"
+ * import {HomeIcon, AboutIcon} from "my_icons_source2"
  * import YourLogoComponent from "my_image_source3"
  *
  * //? stands for optional element
- * const navbarProps = {
- *   generaleStyles: {
+ * const LinkExplorerProps = {
+ *   Style: {
  *     textColor: '#333333',
  *     ?activeBg: '#f0f0f0',
  *     ?activeTextColor: '#007bff',
@@ -46,11 +46,11 @@ interface INavbarProps {
  *     ?ButtonColor: '#3498db',
  *   },
  *   links: [
- *     { ?icon: <HomeIcon />, name: 'Home', link: '/home' },
- *     { ?icon: <AboutIcon />, name: 'About', link: '/about' },
+ *     { name: 'Home', link: '/home' },
+ *     { name: 'About', link: '/about' },
  *     // Add more links as needed
  *   ],
- *   LogoInf: { ?title: 'Your Company', logoIcon: YourLogoComponent },
+ *   LogoInf: { ?title: 'Company: GDG Algiers', logoIcon: YourLogoComponent },
  *   menuType: 'Burger',
  *   loggedIn: false,
  *   loginRoute: '/login',
@@ -63,14 +63,14 @@ interface INavbarProps {
  *   },
  * };
  *
- * <Navbar {...navbarProps} />
+ * <LinkExplorer {...LinkExplorerProps} />
  *
- * @param {INavbarProps} props The props for the component.
+ * @param {ILinkExplorerProps} props The props for the component.
  * @returns {JSX.Element} The rendered element.
  * @author GDG Algiers
  */
 
-const Navbar = (props: INavbarProps) => {
+const LinkExplorer = (props: ILinkExplorerProps) => {
   const {
     Style,
     links,
@@ -212,4 +212,4 @@ const Navbar = (props: INavbarProps) => {
   );
 };
 
-export default Navbar;
+export default LinkExplorer;

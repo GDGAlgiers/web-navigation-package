@@ -25,8 +25,7 @@ import notif from "public/Images/template3/bell.svg";
 import history from "public/Images/template3/clock-five.svg";
 import profil from "public/Images/template3/profilpic.svg";
 //component package call
-import GDGWebNavigationComponents from "@/exports";
-const { EdgeNavbar, EdgeSidebar, InteractiveNavbar, LinkExplorer, QuickSidebar, SideBarWithSearch, SidebarPanel } = GDGWebNavigationComponents;
+import { LinkExplorer, EdgeSidebar, EdgeNavbar, SidebarPanel, InteractiveNavbar, QuickSidebar, SideBarWithSearch } from "@/exports";
 
 const Home = () => {
 

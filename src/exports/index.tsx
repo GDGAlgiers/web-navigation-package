@@ -6,7 +6,7 @@ import InteractiveNavbar from "@/components/InteractiveNavbar";
 import QuickSidebar from "@/components/QuickSidebar";
 import SideBarWithSearch from "@/components/SidebarWithSearch"
 
-export default {
+export {
     LinkExplorer,
     EdgeSidebar,
     EdgeNavbar,

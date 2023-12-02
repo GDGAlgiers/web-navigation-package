@@ -20,7 +20,7 @@ const SearchField = ({isExpanded , toggleSidebar,onSearch}:props) => {
         <input 
           ref={inputRef}
           type="text"
-          className={"block p-2.5 pl-6 outline-none appearance-none flex items-center justify-center rounded-lg" + (isExpanded ? " w-3/4" : " w-10")}
+          className={"p-2.5 pl-6 outline-none appearance-none flex items-center justify-center rounded-lg" + (isExpanded ? " w-3/4" : " w-10")}
           placeholder={isExpanded ? "search" : ""}
           onFocus={toggleSidebar}
           onChange={(e)=>onSearch(e.target.value)}

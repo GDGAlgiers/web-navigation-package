@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-   <a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/GDGAlgiers.png" height="auto" width="200" style="border-radius:50%"></a>
+   <a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/GDGAlgiers.png" height="auto" width="auto" style="border-radius:50%"></a>
   <h3 align="center">Web Navigation Package</h3>
 
   <p align="center">
@@ -187,7 +187,7 @@ LinkExplorer is a responsive React/Next functional component for a navigation ba
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/LinkExplorer.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/LinkExplorer.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 
@@ -245,7 +245,7 @@ EdgeSidebar is a responsive React functional component for a side navigation bar
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/EdgeSidebar.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/EdgeSidebar.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 
@@ -309,7 +309,7 @@ EdgeNavbar is a responsive React functional component for a navigation bar.
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/EdgeNavbar.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/EdgeNavbar.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 
@@ -359,7 +359,7 @@ SidebarPanel is a responsive React functional component for a side navigation ba
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/SidebarPanel.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/SidebarPanel.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 
@@ -417,7 +417,7 @@ InteractiveNavbar is a responsive React functional component for navigation.
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/InteractiveNavbar.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/InteractiveNavbar.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 
@@ -483,7 +483,7 @@ QuickSidebar is a responsive React functional component for a side navigation ba
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/QuickSidebar.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/QuickSidebar.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 
@@ -529,7 +529,7 @@ SideBarWithSearch is a responsive React functional component for a sidebar with 
 
 ## Screenshot
 
-<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/SideBarWithSearch.PNG" height="auto" width="200" style="border-radius:50%"></a>
+<a href="https://github.com/GDGAlgiers/web-navigation-package"><img src="public/Images/docs/SideBarWithSearch.PNG" height="auto" width="auto" style="border-radius:50%"></a>
 
 ## Usage
 

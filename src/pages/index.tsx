@@ -424,7 +424,7 @@ const Home = () => {
         }}
       /> */}
 
-      <EdgeSidebar
+      {/* <EdgeSidebar
         links={
           [
             {
@@ -482,7 +482,7 @@ const Home = () => {
         }
         generaleStyles={generalStyles}
         user={user}
-      />
+      /> */}
     </div>
   );
 };

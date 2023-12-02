@@ -22,7 +22,7 @@ interface ILinkExplorerProps {
 }
 
 /**
- * @component LinkExplorer - A responsive React functional component for a navigation bar.
+ * @component LinkExplorer - A responsive React/Next functional component for a navigation bar.
  *
  * @example
  * // Example usage of LinkExplorer
@@ -57,8 +57,8 @@ interface ILinkExplorerProps {
  *   SignInRoute: '/signin',
  *   User: {
  *     image: UserProfileImage,
- *     ?name: 'John Doe',
- *     ?additionalInfo?: "I am the Manager"
+ *     ?name: 'Okba ALLAOUA',
+ *     ?additionalInfo?: "I am the GDG Open source team leader"
  *     ?role: "Manager",
  *   },
  * };

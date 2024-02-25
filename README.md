@@ -37,7 +37,7 @@ The Repository for Web Navigation Package made using
     <li>
       <a href="#usage">Usage</a>
       <ul>
-        <li><a href="#installation">Developme</a></li>
+        <li><a href="#installation">Development</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -120,7 +120,7 @@ npm run dev
 1. First you have to install the package using the command
 
 ```sh
-npm install gdg-navigation-components
+npm i web-navigation-package
 ```
 
 2. Import the component you want to your file

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Image from "next/image";
-import defaultLogo from "public/images/template2/logo.png";
-import avatarPicture from "public/images/template2/avatar.png";
-import searchIcon from "public/images/template2/search.svg";
+import defaultLogo from "public/images/template2/Logo.png";
 
+import { CiSearch } from "react-icons/ci";
 import { GiHamburgerMenu as HamMenu } from "react-icons/gi";
 import { BsThreeDotsVertical as KebabMenu } from "react-icons/bs";
 import { AiOutlineClose as CloseMenu } from "react-icons/ai";
@@ -79,7 +77,7 @@ type Props = {
 
 function EdgeNavbar(props : Props) {
   const {
-    avatar = { picture: avatarPicture, link: "#" }, //avatar: {picture,link}
+    avatar ,
     logo = defaultLogo,
     isLoggedIn = false,
     loginButton = { text: "Get started", link: "#" }, //loginButton: {text,link}
@@ -127,7 +125,7 @@ function EdgeNavbar(props : Props) {
             menuMap[menuType]()
           )}
 
-          <Image src={logo} alt="logo" className=" h-20" />
+          <img src={logo} alt="logo" className=" h-20" />
 
           {/* search bar */}
           <div
@@ -138,7 +136,7 @@ function EdgeNavbar(props : Props) {
               placeholder="Search"
               className="bg-transparent outline-none pr-4 flex-grow"
             />
-            <Image src={searchIcon} alt="Search Icon" />
+            <CiSearch size={20} />
           </div>
         </div>
 
@@ -147,7 +145,7 @@ function EdgeNavbar(props : Props) {
             {links.map((item) => (
               <li>
                 <Link href={item.link as unknown as string || "#"}>
-                  <Image src={item.icon} alt={item.name} className="h-full w-auto" />
+                  <img src={item.icon} alt={item.name} className="h-full w-auto" />
                 </Link>
               </li>
             ))}
@@ -159,11 +157,11 @@ function EdgeNavbar(props : Props) {
               setMenuOpen(false);
             }}
           >
-            <Image src={searchIcon} alt="Search Icon" />
+            <CiSearch size={16} />
           </button>
           {isLoggedIn ? (
             <Link href={avatar.link}>
-              <Image src={avatar.picture} alt="" className="h-14 w-14 rounded-full" />
+              <img src={avatar.picture} alt="" className="h-14 w-14 rounded-full" />
             </Link>
           ) : (
             <Link href={loginButton.link}>

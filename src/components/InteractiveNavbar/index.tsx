@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { GrMenu } from "react-icons/gr";
@@ -126,7 +125,7 @@ const InteractiveNavbar = (props: IInteractiveNavbarProps) => {
         <div className="flex items-center gap-10">
           <Link href={router.pathname}>
           </Link>
-          <Image
+          <img
             alt="Logo"
             src={LogoInf}
             className="max-h-16 w-auto"
@@ -179,7 +178,7 @@ const InteractiveNavbar = (props: IInteractiveNavbarProps) => {
           </div>
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={userInfo.image} />
+          <img alt="profilpic" src={userInfo.image} />
         ) : (
           <div className="flex items-center gap-3 ">
             <Link href={button1.link}>
@@ -251,14 +250,14 @@ const InteractiveNavbar = (props: IInteractiveNavbarProps) => {
           ) : (
             <Menu />
           )}
-          <Image
+          <img
             alt="Logo"
             src={LogoInf}
             className="max-h-10 w-auto"
           />
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={userInfo.image} />
+          <img alt="profilpic" src={userInfo.image} />
         ) : (
           <Link href={button2.link}>
             <button

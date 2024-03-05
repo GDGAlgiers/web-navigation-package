@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { generaleStyle } from "../../types/generaleStyleType";
@@ -6,7 +5,7 @@ import { NotifLink, simpleLink } from "../../types/linkType";
 import { LogoInfo } from "../../types/logoType";
 import { userInfo } from "../../types/userInfoType";
 
-interface ISidePanel {
+export interface ISidePanel {
   Style: generaleStyle;
   links: simpleLink[];
   LogoInf: LogoInfo;
@@ -77,7 +76,7 @@ const SidebarPanel = (props: ISidePanel) => {
         className="w-64 fixed top-0 scroll flex-col gap-1 items-center bg-white h-screen max-h-screen overflow-y-scroll p-5 hidden lg:flex "
       >
         <div className="flex p-2 items-center gap-2">
-          <Image alt="logoIcon" src={logoIcon} />
+          <img alt="logoIcon" src={logoIcon} />
           <h1 className="text-[#324054] font-semibold text-2xl "> {title} </h1>
         </div>
         <div
@@ -93,7 +92,7 @@ const SidebarPanel = (props: ISidePanel) => {
                   }}
                   className={`p-2 flex items-center gap-4`}
                 >
-                  <Image src={link.icon} alt={link.name} />
+                  <img src={link.icon} alt={link.name} className="w-4 h-4" />
                   <h1
                     style={{
                       color: `${link.link == currentRoute && activeTextColor}`,
@@ -116,7 +115,7 @@ const SidebarPanel = (props: ISidePanel) => {
               <Link key={index} href={Userlink.link}>
                 <div className="flex items-center justify-between">
                   <div className="p-2 flex items-center gap-4">
-                    <Image src={Userlink.icon} alt={Userlink.name} />
+                    <img src={Userlink.icon} alt={Userlink.name}  className="w-4 h-4" />
                     <h1 className=" "> {Userlink.name} </h1>
                   </div>
                   {Userlink.notif != 0 && (
@@ -129,7 +128,7 @@ const SidebarPanel = (props: ISidePanel) => {
             );
           })}
           <div className="flex items-center gap-2 p-3">
-            <Image alt="profil pic" src={User.image} />
+            <img alt="profil pic" src={User.image} />
             <div className=" text-xs ">
               <h1 className="text-[#324054] text-md">{User.name}</h1>
               <p className="text-[#71839B] ">{User.additionalInfo}</p>
@@ -140,7 +139,7 @@ const SidebarPanel = (props: ISidePanel) => {
 
       <div className="w-32 fixed top-0 scroll flex-col gap-5 items-center bg-white h-screen max-h-screen p-5 px-2 flex lg:hidden border-2 border-y-0">
         <div className="flex justify-start items-center">
-          <Image alt="logoIcon" src={logoIcon} />
+          <img alt="logoIcon" src={logoIcon} />
         </div>
         <div
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
@@ -149,7 +148,7 @@ const SidebarPanel = (props: ISidePanel) => {
           {links.map((link, index) => {
             return (
               <Link key={index} href={link.link}>
-                <div className={`flex justify-center p-1 `}><Image src={link.icon} alt={link.name} /> </div>
+                <div className={`flex justify-center p-1 `}><img src={link.icon} alt={link.name}  className="w-4 h-4" /> </div>
               </Link>
             );
           })}
@@ -162,7 +161,7 @@ const SidebarPanel = (props: ISidePanel) => {
             return (
               <Link key={index} href={Userlink.link}>
                 <div className="relative flex justify-center p-1 ">
-                  <Image src={Userlink.icon} alt={Userlink.name} />
+                  <img src={Userlink.icon} alt={Userlink.name} className="w-6 h-6"  />
                   {Userlink.notif && (
                     <div className="bg-[red] absolute text-white w-1 h-1 top-0 right-[30%] rounded-full" />
                   )}
@@ -171,7 +170,7 @@ const SidebarPanel = (props: ISidePanel) => {
             );
           })}
           <div className="flex justify-center p-3">
-            <Image alt="profil pic" src={User.image} />
+            <img alt="profil pic" src={User.image} />
           </div>
         </div>
       </div>

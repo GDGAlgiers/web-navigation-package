@@ -2,7 +2,6 @@ import Link from "next/link";
 import Arrow from "public/Images/template2/Down.svg";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useState } from "react";
-import Image from "next/image";
 import { ListLink } from "../../../types/linkType";
 
 type Props = {
@@ -42,7 +41,7 @@ const ItemChildrenList = ({
                     }}
                 >
                     <div className="flex items-center gap-2 md:gap-4">
-                        <Image src={element.icon} alt={element.name} />
+                        <img src={element.icon} alt={element.name} />
                         <h1
                             className={`flex text-lg font-medium duration-300  ${
                             !Open && "hidden"
@@ -52,7 +51,7 @@ const ItemChildrenList = ({
                             {element.name}
                         </h1>
                     </div>
-                    <Image
+                    <img
                         src={Arrow}
                         alt="Arrow"
                         onClick={() => {

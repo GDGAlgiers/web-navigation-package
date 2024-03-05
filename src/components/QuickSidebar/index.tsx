@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -74,7 +73,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
     <>
       <div className="w-64 fixed top-0 scroll flex-col gap-1 items-center bg-white h-screen max-h-screen overflow-y-scroll p-5 hidden lg:flex ">
         <div className="flex p-2 items-center self-start gap-3">
-          <Image alt="logo" src={logo} />
+          <img alt="logo" src={logo} />
           <h1 className="text-[#324054] font-semibold text-sm "> {Name} </h1>
         </div>
         <div
@@ -90,7 +89,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
                   }}
                   className={`p-2 flex items-center gap-3`}
                 >
-                  <Image src={link.icon} alt={link.name} />
+                  <img src={link.icon} alt={link.name} />
                   <h1
                     style={{
                       color: `${link.route == currentRoute && ActivetextColor}`,
@@ -114,7 +113,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
               return (
                 <Link key={index} href={Userlink.route}>
                   <div className="p-2 flex items-center gap-2">
-                    <Image src={Userlink.icon} alt={Userlink.name} />
+                    <img src={Userlink.icon} alt={Userlink.name} />
                     <h1 className=" "> {Userlink.name} </h1>
                   </div>
                 </Link>
@@ -144,7 +143,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
 
       <div className="w-20 fixed top-0 scroll flex-col gap-5 items-center bg-white h-screen max-h-screen p-5 px-2 flex lg:hidden ">
         <div className="flex justify-center items-center">
-          <Image alt="logo" src={logo} />
+          <img alt="logo" src={logo} />
         </div>
         <div
           style={{ fontSize: `${textSize}`, color: `${textColor}` }}
@@ -153,7 +152,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
           {links.map((link:any, index:number) => {
             return (
               <Link key={index} href={link.route}>
-                <div className={`flex justify-center p-1 `}><Image src={link.icon} alt={link.name} /></div>
+                <div className={`flex justify-center p-1 `}><img src={link.icon} alt={link.name} /></div>
               </Link>
             );
           })}
@@ -166,7 +165,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
             return (
               <Link key={index} href={Userlink.route}>
                 <div className="flex justify-center p-1 ">
-                  <Image src={Userlink.icon} alt={Userlink.name} />
+                  <img src={Userlink.icon} alt={Userlink.name} />
                 </div>
               </Link>
             );
@@ -181,7 +180,7 @@ const QuickSidebar = (props:IQuickSidebarProps) => {
             return (
               <Link key={index} href={Userlink.route}>
                 <div className=" flex justify-center p-1 ">
-                  <Image src={Userlink.icon} alt={Userlink.name} />
+                  <img src={Userlink.icon} alt={Userlink.name} />
                 </div>
               </Link>
             );

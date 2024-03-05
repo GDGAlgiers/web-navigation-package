@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import Arrow from "public/Images/template2/Down.svg";
+import { FaAngleDown } from "react-icons/fa6";
 import Support from "public/Images/template2/Support.png";
 import Collapse from "public/Images/template2/Subtract.svg";
 import LinkList from "./subComponents/LinkList";
@@ -99,7 +99,7 @@ const EdgeSidebar = ({
               Open ? "border-2 py-2 gap-2" : "p-0 my-6 border-0"
             }`}
           >
-            <Image src={user.image} alt="Profile Picture" className="w-12" />
+            <img src={user.image} alt="Profile Picture" className="w-12" />
             <div className={`px-3 duration-300 flex flex-col items-center ${!Open && "hidden px-2"}`}>
               <h1 className="text-lg font-bold ">{user.name}</h1>
               <p className="text-sm opacity-50">{user.role}</p>
@@ -120,16 +120,16 @@ const EdgeSidebar = ({
             (Open)
             ?
             <div className="flex flex-wrap items-center justify-center gap-0 sm:gap-2 px-4 md:px-6 py-3 border-2 border-gray-300 rounded-2xl">
-              <Image alt="Support" src={Support} />
+              <img alt="Support" src={Support.src} />
               <div>
                 <h1 className="text-lg font-bold">Help Center</h1>
                 <p className="text-sm opacity-50">Answer Here</p>
               </div>
-              <Image src={Arrow} alt="Arrow" className="-rotate-90" />
+              <img src={Arrow} alt="Arrow" className="-rotate-90" />
             </div>
             :
             <div className="flex justify-center p-2 drop-shadow-xl rounded-xl hover:bg-zinc-300">
-              <Image alt="Support" src={Support} />
+              <img alt="Support" src={Support.src} />
             </div>
           }
         </Link>
@@ -148,7 +148,7 @@ const EdgeSidebar = ({
             <li className="items-center p-4">
               <Link href={"/"}>
                 <div className="flex items-center w-full gap-4">
-                  <Image src={Collapse} alt="Collapse" />
+                  <img src={Collapse} alt="Collapse" />
                   <h1
                     className={`flex font-medium duration-300 text-gray-500 ${
                       !Open && "hidden"

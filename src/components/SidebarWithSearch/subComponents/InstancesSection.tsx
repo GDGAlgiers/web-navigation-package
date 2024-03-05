@@ -2,7 +2,6 @@ import Link from "next/link";
 import SearchField from "./SearchField";
 import React, { useState } from "react";
 import { simpleLink } from "../../../types/linkType";
-import Image from "next/image";
 
 interface props {
   searchBarCustomization?: any;
@@ -55,7 +54,7 @@ const InstancesSection = ({
                 className="absolute top-0 right-0 w-[5px] h-full rounded-l"
               />
             )}
-            <Image src={instance.icon} alt={instance.name} />
+            <img src={instance.icon} alt={instance.name} />
             {isExpanded && (
               <h1
                 style={{

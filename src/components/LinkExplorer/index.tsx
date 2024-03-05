@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { GrMenu } from "react-icons/gr";
@@ -110,7 +109,7 @@ const LinkExplorer = (props: ILinkExplorerProps) => {
         className={` items-center justify-between px-3 w-full bg-[#fff] h-24 fixed top-0 hidden lg:flex `}
       >
         <div className="flex items-center gap-10">
-          <Image
+          <img
             alt="Logo"
             src={LogoInf.logoIcon}
             className="max-h-16 w-auto"
@@ -130,7 +129,7 @@ const LinkExplorer = (props: ILinkExplorerProps) => {
           </div>
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={User.image} />
+          <img alt="profilpic" src={User.image} />
         ) : (
           <div className="flex items-center gap-3 ">
             <Link href={loginRoute}>
@@ -188,14 +187,14 @@ const LinkExplorer = (props: ILinkExplorerProps) => {
           ) : (
             <Menu />
           )}
-          <Image
+          <img
             alt="Logo"
             src={LogoInf.logoIcon}
             className="max-h-10 w-auto"
           />
         </div>
         {loggedIn ? (
-          <Image alt="profilpic" src={User.image} />
+          <img alt="profilpic" src={User.image} />
         ) : (
           <Link href={SignInRoute}>
             <button

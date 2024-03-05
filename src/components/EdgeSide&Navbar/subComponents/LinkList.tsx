@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Dispatch, SetStateAction, useState } from "react";
 
 import { useRouter } from "next/router";
@@ -50,7 +49,7 @@ export default function LinkList({ links, Open, setOpen, generaleStyles } : Prop
           >
             <Link href={element.currentLink as string}>
               <div className={`flex items-center gap-2 md:gap-4 p-3 ${(!Open) && 'justify-center'}`}>
-                <Image src={element.icon} alt={element.name} />
+                <img src={element.icon} alt={element.name} />
                 {/* logo */}
                 <h1
                   className={`flex text-lg font-medium duration-300  ${

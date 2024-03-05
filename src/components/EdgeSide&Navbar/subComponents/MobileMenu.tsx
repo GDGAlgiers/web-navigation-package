@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { simpleLink } from "./../../../types/linkType";
@@ -14,7 +13,7 @@ function MobileMenu({ links } : Props) {
         {links.map((item) => (
           <li>
             <Link className="flex items-center gap-4" href={item.link as unknown as string || "#"}>
-              <Image src={item.icon} alt={item.name} className="h-full w-auto" />
+              <img src={item.icon} alt={item.name} className="h-full w-auto" />
               <span>{item.name}</span>
             </Link>
           </li>

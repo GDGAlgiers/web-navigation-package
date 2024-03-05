@@ -1,5 +1,4 @@
-import Image from "next/image";
-import searchLoop from "/public/Images/SideBarWithSearch/search_logo.svg";
+import { CiSearch } from "react-icons/ci";
 import {useRef} from "react";
 interface props{
   isExpanded:boolean ,searchBarCustomization:any, toggleSidebar:any,onSearch:any
@@ -26,12 +25,7 @@ const SearchField = ({isExpanded , toggleSidebar,onSearch}:props) => {
           onChange={(e)=>onSearch(e.target.value)}
           style={{backgroundColor:"#3A3B3B" , fontSize:"0.8rem", color:"#7F8080"}}
         />
-        <Image
-          src={searchLoop}
-          alt="search"
-          onClick={handleImageClick}
-          className={`absolute top-3.5 left-3.5 ${isExpanded && "absolute top-3.5 left-10"}`}
-        />
+        <CiSearch onClick={handleImageClick} size={20}  className={`absolute top-3.5 left-3.5 ${isExpanded && "absolute top-3.5 left-10"}`} />
       </div>
   )
 }

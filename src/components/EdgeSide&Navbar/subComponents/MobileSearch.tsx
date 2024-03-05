@@ -1,7 +1,5 @@
-import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
-import searchIcon from "public/images/template2/search.svg";
-
+import { CiSearch } from "react-icons/ci";
 type Props = {
   setOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -12,7 +10,7 @@ function MobileSearch({ setOpen } : Props) {
       <div
         className={`flex w-64 h-12 items-center border border-[#696969] rounded-[100px] justify-between p-4 bg-Light-grey-input text-[#696969]`}
       >
-        <Image src={searchIcon} alt="Search Icon" />
+        <CiSearch size={16} />
         <input
           type="text"
           placeholder="Search"

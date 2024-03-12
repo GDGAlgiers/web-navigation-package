@@ -120,7 +120,7 @@ npm run dev
 1. First you have to install the package using the command
 
 ```sh
-npm i web-navigation-package
+npm i navigation-web-package
 ```
 
 2. Import the component you want to your file
